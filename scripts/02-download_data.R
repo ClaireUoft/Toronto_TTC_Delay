@@ -30,6 +30,6 @@ streetcar_data <- list_package_resources("b68cb71b-44a7-4394-97e2-5d2f41462a5d")
   get_resource()
 
 #### Save data ####
-write_csv(bus_data, "data/01-raw_data/raw_data.csv")
-write_csv(subway_data,"data/01-raw_data/raw_data.csv")
-write_csv(streetcar_data, "data/01-raw_data/raw_data.csv")
+write_csv(bus_data, "data/01-raw_data/raw_data_bus.csv")
+write_csv(subway_data,"data/01-raw_data/raw_data_subway.csv")
+write_csv(streetcar_data, "data/01-raw_data/raw_data_streetcar.csv")
