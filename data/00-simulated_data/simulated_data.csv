@@ -1,152 +1,1001 @@
-division,state,party
-Division 1,Victoria,Liberal
-Division 2,New South Wales,Liberal
-Division 3,Tasmania,Liberal
-Division 4,New South Wales,Liberal
-Division 5,Queensland,Liberal
-Division 6,New South Wales,Labor
-Division 7,Victoria,Liberal
-Division 8,Western Australia,Labor
-Division 9,Western Australia,Greens
-Division 10,Queensland,Labor
-Division 11,Queensland,Labor
-Division 12,Northern Territory,Liberal
-Division 13,New South Wales,Labor
-Division 14,Western Australia,Labor
-Division 15,Western Australia,National
-Division 16,Victoria,Liberal
-Division 17,South Australia,Liberal
-Division 18,Victoria,Liberal
-Division 19,Western Australia,Labor
-Division 20,South Australia,Labor
-Division 21,New South Wales,Liberal
-Division 22,Queensland,Greens
-Division 23,New South Wales,Liberal
-Division 24,New South Wales,Liberal
-Division 25,Queensland,Labor
-Division 26,Victoria,National
-Division 27,New South Wales,Liberal
-Division 28,Queensland,Liberal
-Division 29,Tasmania,Liberal
-Division 30,South Australia,Liberal
-Division 31,New South Wales,Liberal
-Division 32,Victoria,Labor
-Division 33,Tasmania,Liberal
-Division 34,New South Wales,Liberal
-Division 35,Western Australia,Labor
-Division 36,New South Wales,Liberal
-Division 37,Tasmania,Greens
-Division 38,Tasmania,Labor
-Division 39,Victoria,Greens
-Division 40,South Australia,Labor
-Division 41,New South Wales,Other
-Division 42,New South Wales,Other
-Division 43,Tasmania,Labor
-Division 44,Tasmania,National
-Division 45,Queensland,Liberal
-Division 46,Australian Capital Territory,Other
-Division 47,Queensland,Labor
-Division 48,Queensland,Other
-Division 49,South Australia,Liberal
-Division 50,Victoria,National
-Division 51,South Australia,Liberal
-Division 52,Victoria,Labor
-Division 53,South Australia,National
-Division 54,Queensland,Liberal
-Division 55,Queensland,Labor
-Division 56,South Australia,Liberal
-Division 57,New South Wales,Other
-Division 58,Northern Territory,Liberal
-Division 59,New South Wales,Labor
-Division 60,Western Australia,Labor
-Division 61,New South Wales,Liberal
-Division 62,South Australia,Liberal
-Division 63,Queensland,Labor
-Division 64,Tasmania,Labor
-Division 65,South Australia,Labor
-Division 66,Victoria,Labor
-Division 67,Queensland,Liberal
-Division 68,Queensland,Liberal
-Division 69,Tasmania,Labor
-Division 70,South Australia,National
-Division 71,Australian Capital Territory,Labor
-Division 72,Western Australia,Labor
-Division 73,Queensland,National
-Division 74,Victoria,Labor
-Division 75,Western Australia,Labor
-Division 76,Tasmania,Labor
-Division 77,Queensland,Liberal
-Division 78,Western Australia,Liberal
-Division 79,Queensland,Labor
-Division 80,Queensland,Liberal
-Division 81,Victoria,Labor
-Division 82,New South Wales,Liberal
-Division 83,Victoria,Liberal
-Division 84,Queensland,National
-Division 85,Western Australia,Liberal
-Division 86,New South Wales,Labor
-Division 87,Queensland,Liberal
-Division 88,New South Wales,Liberal
-Division 89,Tasmania,Liberal
-Division 90,South Australia,Labor
-Division 91,Victoria,Liberal
-Division 92,New South Wales,Labor
-Division 93,Tasmania,Labor
-Division 94,South Australia,Labor
-Division 95,Victoria,Liberal
-Division 96,Victoria,Labor
-Division 97,Western Australia,Liberal
-Division 98,Queensland,Liberal
-Division 99,South Australia,Liberal
-Division 100,New South Wales,Labor
-Division 101,South Australia,Labor
-Division 102,New South Wales,Labor
-Division 103,Victoria,Labor
-Division 104,Victoria,Labor
-Division 105,South Australia,Other
-Division 106,Western Australia,Labor
-Division 107,Tasmania,Liberal
-Division 108,Victoria,Labor
-Division 109,Queensland,Liberal
-Division 110,Victoria,Labor
-Division 111,Australian Capital Territory,Labor
-Division 112,Victoria,Liberal
-Division 113,Victoria,Liberal
-Division 114,Victoria,Liberal
-Division 115,Tasmania,Labor
-Division 116,Victoria,Labor
-Division 117,New South Wales,Labor
-Division 118,Victoria,Labor
-Division 119,Victoria,Greens
-Division 120,Northern Territory,Labor
-Division 121,South Australia,Liberal
-Division 122,New South Wales,Liberal
-Division 123,New South Wales,Labor
-Division 124,New South Wales,Liberal
-Division 125,New South Wales,National
-Division 126,New South Wales,Labor
-Division 127,Queensland,Labor
-Division 128,New South Wales,Other
-Division 129,Queensland,Labor
-Division 130,Australian Capital Territory,Liberal
-Division 131,Tasmania,Greens
-Division 132,New South Wales,National
-Division 133,New South Wales,Labor
-Division 134,Northern Territory,Labor
-Division 135,South Australia,National
-Division 136,Victoria,Labor
-Division 137,Tasmania,National
-Division 138,South Australia,Liberal
-Division 139,New South Wales,Labor
-Division 140,Victoria,Other
-Division 141,Queensland,Greens
-Division 142,Victoria,National
-Division 143,Western Australia,Labor
-Division 144,Victoria,Labor
-Division 145,Queensland,Liberal
-Division 146,Tasmania,Liberal
-Division 147,South Australia,Liberal
-Division 148,Victoria,Labor
-Division 149,New South Wales,National
-Division 150,New South Wales,Labor
-Division 151,Victoria,Liberal
+year,month,day,weekday,hour,minute,line,Transit_mode,incident,delay
+2024,5,26,Tuesday,20,57,1,Subway,Mechanical,16
+2024,12,2,Tuesday,11,28,1,Streetcar,General Delay,3
+2024,10,15,Friday,17,5,3,Subway,General Delay,30
+2024,7,29,Friday,23,47,2,Subway,Mechanical,31
+2024,3,11,Tuesday,15,13,3,Subway,Emergency,44
+2024,9,9,Friday,18,20,4,Bus,Emergency,37
+2024,2,20,Sunday,20,56,1,Subway,Mechanical,36
+2024,12,12,Sunday,19,31,2,Streetcar,Emergency,27
+2024,12,25,Tuesday,14,15,1,Bus,Emergency,23
+2024,7,3,Thursday,19,1,3,Subway,Operations,20
+2024,2,30,Wednesday,14,40,1,Bus,Emergency,19
+2024,6,3,Wednesday,5,52,2,Subway,Emergency,39
+2024,1,28,Thursday,10,33,3,Streetcar,Operations,16
+2024,2,5,Monday,12,32,3,Streetcar,Mechanical,23
+2024,3,26,Friday,3,26,3,Subway,Operations,27
+2024,3,27,Monday,8,29,2,Subway,Mechanical,26
+2024,9,2,Wednesday,7,38,2,Subway,Operations,0
+2024,8,6,Wednesday,11,53,2,Subway,Emergency,25
+2024,11,18,Monday,13,3,4,Subway,Mechanical,25
+2024,11,24,Saturday,9,58,4,Subway,Emergency,36
+2024,9,14,Monday,13,34,3,Bus,Operations,17
+2024,10,15,Thursday,14,8,4,Streetcar,Emergency,33
+2024,8,18,Monday,6,6,4,Subway,Operations,29
+2024,1,19,Sunday,12,55,2,Streetcar,Operations,0
+2024,6,3,Wednesday,14,22,2,Bus,Emergency,44
+2024,2,31,Tuesday,7,34,3,Subway,Emergency,13
+2024,6,27,Wednesday,17,45,2,Bus,Operations,38
+2024,3,27,Friday,3,44,4,Streetcar,Mechanical,46
+2024,1,5,Thursday,18,5,2,Bus,Operations,35
+2024,10,13,Thursday,23,5,4,Streetcar,Operations,35
+2024,10,3,Wednesday,9,12,2,Subway,General Delay,5
+2024,1,10,Saturday,3,9,4,Bus,General Delay,27
+2024,12,24,Wednesday,15,36,2,Subway,Mechanical,41
+2024,6,7,Monday,5,23,1,Streetcar,General Delay,24
+2024,1,10,Friday,7,41,3,Bus,Emergency,29
+2024,9,30,Sunday,2,20,2,Streetcar,General Delay,15
+2024,5,6,Saturday,11,52,4,Streetcar,Mechanical,21
+2024,9,1,Thursday,22,53,2,Subway,Mechanical,10
+2024,10,20,Sunday,17,54,1,Bus,Mechanical,29
+2024,9,6,Monday,1,15,3,Bus,General Delay,1
+2024,9,31,Friday,15,14,1,Bus,Operations,30
+2024,6,15,Wednesday,4,40,1,Streetcar,Mechanical,5
+2024,11,24,Monday,22,41,1,Streetcar,Emergency,18
+2024,5,28,Wednesday,5,32,3,Streetcar,Emergency,10
+2024,4,3,Friday,2,51,3,Bus,Mechanical,16
+2024,2,25,Monday,11,49,2,Subway,Mechanical,34
+2024,12,19,Wednesday,15,13,4,Bus,Operations,30
+2024,10,29,Monday,7,15,4,Streetcar,Mechanical,19
+2024,1,3,Thursday,18,4,4,Bus,Operations,3
+2024,1,8,Thursday,13,20,2,Subway,Emergency,24
+2024,11,21,Friday,23,33,1,Streetcar,Mechanical,16
+2024,5,3,Sunday,6,17,2,Streetcar,Emergency,39
+2024,6,8,Sunday,17,32,4,Subway,Emergency,45
+2024,2,22,Friday,9,13,3,Bus,Mechanical,43
+2024,4,19,Tuesday,10,52,1,Bus,General Delay,34
+2024,11,27,Friday,1,20,1,Bus,General Delay,1
+2024,12,21,Friday,14,24,3,Subway,Operations,8
+2024,6,31,Sunday,6,37,2,Subway,Mechanical,40
+2024,10,22,Tuesday,0,36,1,Subway,Emergency,38
+2024,10,12,Friday,9,39,4,Bus,General Delay,10
+2024,6,7,Monday,10,10,4,Bus,General Delay,35
+2024,2,6,Friday,11,16,3,Streetcar,Mechanical,8
+2024,8,13,Thursday,0,59,2,Subway,General Delay,15
+2024,12,24,Thursday,8,36,4,Streetcar,Emergency,40
+2024,5,18,Sunday,1,53,1,Subway,Emergency,25
+2024,10,11,Wednesday,0,36,1,Streetcar,Mechanical,34
+2024,4,2,Wednesday,0,10,1,Subway,Emergency,27
+2024,10,10,Sunday,5,22,2,Bus,General Delay,15
+2024,12,30,Sunday,8,30,1,Subway,Mechanical,22
+2024,1,30,Wednesday,19,58,2,Subway,Mechanical,19
+2024,3,24,Sunday,19,54,1,Bus,Mechanical,0
+2024,8,17,Tuesday,9,39,2,Bus,Mechanical,21
+2024,12,21,Friday,18,49,4,Streetcar,Operations,0
+2024,8,15,Sunday,10,24,2,Streetcar,General Delay,24
+2024,3,30,Wednesday,23,22,1,Bus,Emergency,9
+2024,8,4,Thursday,19,6,2,Bus,Operations,13
+2024,11,27,Wednesday,6,35,3,Bus,General Delay,45
+2024,1,14,Saturday,13,11,3,Bus,General Delay,21
+2024,12,16,Thursday,22,32,3,Bus,Operations,30
+2024,2,20,Sunday,12,41,3,Bus,Operations,37
+2024,8,15,Thursday,4,11,4,Subway,Operations,45
+2024,10,7,Tuesday,1,1,1,Bus,Mechanical,29
+2024,3,25,Sunday,8,37,1,Bus,Emergency,26
+2024,2,16,Wednesday,22,22,3,Streetcar,Operations,25
+2024,1,8,Thursday,20,9,4,Streetcar,General Delay,42
+2024,11,28,Sunday,15,9,2,Bus,General Delay,24
+2024,7,19,Tuesday,1,16,4,Subway,General Delay,22
+2024,2,28,Monday,14,10,3,Bus,Mechanical,5
+2024,4,30,Friday,1,13,4,Subway,Emergency,36
+2024,10,26,Thursday,23,14,4,Bus,Emergency,29
+2024,5,3,Wednesday,15,57,4,Subway,Emergency,38
+2024,12,19,Thursday,16,22,1,Bus,Emergency,21
+2024,1,17,Friday,3,18,1,Subway,Emergency,23
+2024,3,17,Sunday,7,38,2,Bus,Operations,1
+2024,5,31,Thursday,18,47,2,Streetcar,General Delay,8
+2024,7,2,Friday,13,49,3,Bus,Operations,37
+2024,9,10,Saturday,21,17,4,Bus,General Delay,24
+2024,11,16,Tuesday,8,57,1,Subway,Operations,29
+2024,11,20,Tuesday,18,10,2,Subway,Operations,13
+2024,4,9,Saturday,8,49,4,Subway,General Delay,40
+2024,5,2,Friday,8,49,3,Bus,Mechanical,30
+2024,9,8,Thursday,7,51,2,Streetcar,General Delay,32
+2024,7,12,Monday,6,3,2,Subway,Operations,0
+2024,12,12,Monday,14,25,1,Bus,General Delay,4
+2024,7,2,Thursday,3,30,4,Bus,Emergency,32
+2024,7,26,Friday,23,41,2,Subway,Emergency,46
+2024,7,16,Friday,9,8,3,Bus,General Delay,9
+2024,12,15,Sunday,16,54,1,Streetcar,Emergency,7
+2024,8,2,Monday,19,54,4,Subway,Mechanical,16
+2024,5,1,Thursday,1,31,4,Bus,Operations,25
+2024,5,7,Friday,13,36,4,Subway,Mechanical,4
+2024,10,7,Friday,23,59,4,Subway,Operations,29
+2024,11,7,Sunday,7,39,1,Streetcar,Emergency,46
+2024,7,25,Thursday,15,5,3,Bus,Mechanical,8
+2024,6,23,Sunday,16,15,4,Bus,General Delay,21
+2024,12,8,Sunday,15,32,1,Streetcar,Operations,12
+2024,6,23,Monday,9,45,2,Bus,Emergency,16
+2024,10,31,Sunday,18,10,4,Streetcar,Operations,38
+2024,9,11,Sunday,6,22,2,Subway,Operations,19
+2024,2,1,Friday,16,32,2,Bus,Operations,38
+2024,2,22,Tuesday,0,17,1,Bus,Emergency,2
+2024,4,17,Thursday,18,12,3,Bus,General Delay,29
+2024,3,19,Saturday,9,36,1,Streetcar,General Delay,37
+2024,1,2,Tuesday,6,38,2,Streetcar,Operations,11
+2024,9,25,Wednesday,10,29,3,Subway,Operations,14
+2024,9,12,Monday,1,19,4,Bus,Operations,27
+2024,12,27,Saturday,8,5,4,Streetcar,Operations,21
+2024,4,20,Tuesday,2,59,2,Subway,Mechanical,32
+2024,7,21,Thursday,3,49,2,Bus,Operations,36
+2024,7,27,Friday,18,30,2,Bus,General Delay,6
+2024,12,21,Saturday,16,31,3,Bus,Operations,39
+2024,9,17,Thursday,17,47,4,Subway,Emergency,33
+2024,12,22,Thursday,7,22,3,Bus,Emergency,31
+2024,6,1,Monday,16,49,2,Bus,Mechanical,8
+2024,1,3,Friday,9,13,4,Subway,Mechanical,38
+2024,2,13,Tuesday,12,0,4,Streetcar,General Delay,39
+2024,9,1,Sunday,5,24,3,Bus,Operations,20
+2024,4,29,Friday,5,13,2,Bus,Emergency,10
+2024,9,2,Monday,12,29,2,Subway,General Delay,1
+2024,9,21,Thursday,9,19,3,Subway,General Delay,44
+2024,8,22,Thursday,1,46,4,Streetcar,Mechanical,20
+2024,7,21,Wednesday,6,38,3,Streetcar,Operations,19
+2024,8,10,Tuesday,8,15,4,Streetcar,Emergency,29
+2024,7,16,Tuesday,1,9,3,Bus,General Delay,4
+2024,3,30,Tuesday,20,36,3,Streetcar,Operations,24
+2024,6,30,Monday,4,55,3,Bus,Operations,10
+2024,11,5,Thursday,3,12,3,Bus,General Delay,38
+2024,6,18,Friday,17,39,1,Subway,Mechanical,25
+2024,7,27,Thursday,18,42,1,Bus,Emergency,41
+2024,5,27,Monday,16,31,2,Subway,Emergency,24
+2024,1,22,Wednesday,10,8,3,Streetcar,Operations,44
+2024,2,6,Wednesday,16,15,1,Bus,General Delay,24
+2024,7,20,Monday,0,30,3,Streetcar,Emergency,15
+2024,11,8,Thursday,9,11,1,Bus,Operations,28
+2024,11,29,Saturday,5,32,2,Subway,Mechanical,6
+2024,4,19,Thursday,8,50,1,Subway,Emergency,24
+2024,3,8,Saturday,12,7,4,Streetcar,Mechanical,0
+2024,10,14,Saturday,11,5,4,Subway,Emergency,1
+2024,1,1,Wednesday,0,23,4,Streetcar,Mechanical,32
+2024,9,26,Saturday,6,20,2,Subway,General Delay,46
+2024,2,30,Friday,11,34,1,Streetcar,General Delay,36
+2024,11,21,Monday,18,16,4,Streetcar,Mechanical,28
+2024,11,7,Thursday,15,7,1,Bus,Operations,19
+2024,12,18,Wednesday,1,13,1,Bus,Mechanical,20
+2024,11,12,Wednesday,14,37,1,Subway,Mechanical,39
+2024,9,28,Sunday,1,33,2,Subway,Mechanical,0
+2024,4,13,Friday,17,47,4,Subway,Operations,29
+2024,5,31,Saturday,22,3,3,Bus,Emergency,47
+2024,6,30,Wednesday,6,56,2,Subway,Mechanical,42
+2024,9,9,Friday,1,46,2,Streetcar,Operations,25
+2024,5,16,Tuesday,23,26,3,Streetcar,General Delay,33
+2024,1,8,Wednesday,13,14,2,Subway,Emergency,13
+2024,2,20,Sunday,21,22,4,Bus,Mechanical,46
+2024,11,24,Wednesday,11,11,1,Subway,Operations,35
+2024,12,7,Friday,15,15,1,Bus,Emergency,40
+2024,5,1,Friday,1,9,3,Bus,Mechanical,42
+2024,1,17,Tuesday,1,7,3,Streetcar,Mechanical,14
+2024,1,28,Tuesday,21,6,2,Bus,Emergency,8
+2024,7,3,Thursday,21,22,2,Subway,Emergency,21
+2024,2,2,Tuesday,22,10,1,Streetcar,Emergency,44
+2024,3,21,Thursday,4,58,1,Subway,Operations,14
+2024,8,28,Saturday,1,31,3,Bus,Emergency,16
+2024,3,19,Tuesday,3,0,1,Subway,Operations,18
+2024,10,17,Wednesday,7,17,4,Subway,General Delay,16
+2024,9,16,Saturday,14,35,1,Subway,Operations,11
+2024,4,15,Tuesday,23,54,1,Subway,Emergency,10
+2024,12,22,Tuesday,1,6,2,Bus,General Delay,5
+2024,5,30,Thursday,18,38,1,Subway,Emergency,5
+2024,10,13,Monday,9,41,1,Bus,Operations,37
+2024,8,11,Friday,22,57,4,Bus,Emergency,44
+2024,3,19,Wednesday,0,59,1,Subway,General Delay,43
+2024,12,26,Tuesday,17,17,1,Bus,Operations,21
+2024,9,3,Wednesday,18,44,4,Subway,Mechanical,20
+2024,4,16,Wednesday,18,45,1,Streetcar,General Delay,25
+2024,3,4,Wednesday,15,13,4,Streetcar,Mechanical,37
+2024,11,22,Friday,10,49,4,Bus,General Delay,10
+2024,10,16,Tuesday,11,33,1,Subway,General Delay,23
+2024,1,15,Monday,21,52,1,Streetcar,Operations,43
+2024,12,28,Sunday,6,36,1,Bus,Emergency,41
+2024,2,18,Monday,9,55,1,Bus,Mechanical,13
+2024,5,16,Wednesday,2,44,1,Bus,Mechanical,3
+2024,1,2,Saturday,9,1,4,Streetcar,Emergency,40
+2024,1,26,Saturday,4,29,1,Bus,General Delay,4
+2024,9,17,Saturday,5,39,3,Streetcar,Emergency,25
+2024,11,18,Monday,0,13,1,Streetcar,Operations,43
+2024,12,6,Thursday,11,25,2,Bus,Emergency,39
+2024,2,12,Monday,13,46,4,Subway,Emergency,4
+2024,9,12,Friday,20,28,2,Streetcar,General Delay,11
+2024,6,27,Friday,21,26,4,Subway,General Delay,34
+2024,5,2,Sunday,19,1,4,Streetcar,Mechanical,40
+2024,9,19,Wednesday,23,23,3,Bus,General Delay,9
+2024,4,9,Wednesday,3,15,3,Subway,Operations,23
+2024,6,23,Sunday,23,56,1,Subway,Mechanical,8
+2024,5,12,Monday,15,8,1,Subway,Operations,0
+2024,3,6,Tuesday,21,46,2,Streetcar,Emergency,0
+2024,12,23,Thursday,22,33,2,Streetcar,Mechanical,38
+2024,12,27,Friday,7,3,3,Bus,Operations,30
+2024,12,27,Wednesday,19,33,1,Streetcar,Mechanical,0
+2024,11,25,Saturday,11,24,4,Streetcar,Emergency,33
+2024,3,4,Saturday,0,35,4,Streetcar,Operations,18
+2024,9,29,Monday,17,16,3,Subway,Emergency,43
+2024,5,10,Tuesday,0,40,2,Streetcar,Emergency,22
+2024,7,10,Monday,23,6,1,Subway,Operations,44
+2024,5,3,Tuesday,10,8,4,Streetcar,Emergency,36
+2024,9,16,Thursday,14,4,1,Subway,Operations,35
+2024,11,29,Saturday,16,0,1,Streetcar,Mechanical,15
+2024,8,23,Sunday,3,55,1,Streetcar,Mechanical,1
+2024,9,21,Saturday,20,30,4,Bus,General Delay,32
+2024,7,11,Friday,6,43,4,Subway,Mechanical,14
+2024,6,10,Sunday,1,13,2,Bus,Operations,23
+2024,4,18,Thursday,3,33,2,Subway,Emergency,7
+2024,9,10,Thursday,9,45,3,Bus,Emergency,15
+2024,2,18,Thursday,19,11,3,Streetcar,Emergency,27
+2024,10,27,Saturday,4,22,4,Streetcar,General Delay,34
+2024,3,8,Sunday,22,20,3,Bus,Mechanical,13
+2024,11,12,Saturday,3,28,1,Bus,Emergency,0
+2024,5,19,Sunday,11,1,3,Bus,General Delay,46
+2024,12,16,Thursday,22,10,2,Bus,Mechanical,10
+2024,7,26,Monday,5,45,1,Bus,Emergency,44
+2024,2,17,Saturday,6,22,4,Streetcar,Operations,34
+2024,11,20,Thursday,15,25,3,Bus,Operations,44
+2024,9,29,Saturday,20,32,3,Streetcar,Operations,33
+2024,3,27,Tuesday,23,9,4,Streetcar,Mechanical,46
+2024,1,26,Saturday,18,41,4,Streetcar,Mechanical,19
+2024,7,26,Wednesday,22,54,3,Bus,General Delay,23
+2024,11,30,Tuesday,19,45,4,Bus,Mechanical,17
+2024,5,10,Wednesday,19,57,4,Bus,Mechanical,9
+2024,12,9,Thursday,8,15,3,Bus,Emergency,19
+2024,9,2,Wednesday,11,33,3,Streetcar,General Delay,24
+2024,7,13,Sunday,14,0,4,Streetcar,Operations,7
+2024,5,12,Thursday,19,46,4,Bus,General Delay,38
+2024,9,18,Monday,16,0,3,Subway,Emergency,29
+2024,3,16,Friday,0,32,1,Bus,Operations,11
+2024,11,14,Wednesday,22,40,2,Streetcar,General Delay,40
+2024,4,6,Monday,21,21,4,Streetcar,Operations,24
+2024,4,17,Sunday,14,7,1,Streetcar,Mechanical,42
+2024,4,23,Monday,9,19,2,Streetcar,Operations,21
+2024,9,9,Wednesday,12,37,1,Bus,Emergency,25
+2024,4,11,Monday,13,57,1,Subway,General Delay,23
+2024,1,21,Monday,21,26,1,Subway,Emergency,40
+2024,1,5,Sunday,0,41,4,Streetcar,Mechanical,3
+2024,1,15,Tuesday,21,33,2,Subway,Emergency,26
+2024,4,12,Saturday,20,13,3,Bus,Emergency,40
+2024,11,23,Tuesday,11,53,4,Streetcar,General Delay,47
+2024,12,30,Friday,14,31,2,Subway,General Delay,35
+2024,8,21,Friday,9,47,3,Subway,General Delay,32
+2024,12,23,Wednesday,17,31,2,Subway,Emergency,27
+2024,2,7,Tuesday,6,46,4,Streetcar,Emergency,2
+2024,3,18,Tuesday,22,16,2,Subway,Emergency,14
+2024,2,10,Thursday,11,24,1,Streetcar,Mechanical,21
+2024,4,13,Wednesday,16,30,2,Bus,Operations,32
+2024,1,2,Friday,23,16,4,Subway,Operations,44
+2024,2,27,Tuesday,19,39,1,Bus,Emergency,1
+2024,12,3,Wednesday,11,45,4,Streetcar,Operations,43
+2024,8,2,Tuesday,10,26,4,Streetcar,Emergency,11
+2024,3,6,Wednesday,2,45,3,Streetcar,Mechanical,45
+2024,10,5,Saturday,8,37,1,Subway,Mechanical,18
+2024,10,12,Wednesday,6,41,3,Bus,Mechanical,47
+2024,3,25,Tuesday,6,4,2,Subway,Operations,22
+2024,12,27,Tuesday,17,37,3,Subway,Emergency,34
+2024,11,2,Sunday,16,43,3,Streetcar,Mechanical,0
+2024,3,18,Monday,23,24,3,Bus,Emergency,21
+2024,4,30,Saturday,7,8,1,Streetcar,Emergency,45
+2024,4,5,Saturday,2,55,3,Bus,Emergency,20
+2024,10,1,Sunday,7,50,4,Streetcar,Operations,41
+2024,7,2,Saturday,5,23,1,Bus,Operations,4
+2024,1,23,Wednesday,10,25,3,Streetcar,Emergency,6
+2024,10,25,Saturday,5,58,1,Streetcar,Emergency,25
+2024,5,10,Monday,7,50,4,Subway,General Delay,1
+2024,8,17,Friday,0,41,3,Subway,Operations,28
+2024,8,8,Friday,5,11,2,Subway,General Delay,32
+2024,8,26,Sunday,10,29,4,Streetcar,General Delay,19
+2024,6,5,Friday,18,54,1,Subway,Mechanical,32
+2024,10,21,Thursday,13,58,3,Bus,Operations,16
+2024,5,31,Friday,15,19,2,Bus,Mechanical,11
+2024,11,23,Sunday,16,26,4,Subway,General Delay,38
+2024,4,22,Wednesday,0,32,4,Bus,General Delay,42
+2024,9,28,Sunday,9,34,2,Bus,Emergency,39
+2024,5,23,Friday,20,18,2,Subway,Operations,0
+2024,3,22,Sunday,3,17,2,Bus,Operations,3
+2024,8,7,Sunday,16,59,2,Subway,Mechanical,17
+2024,5,30,Saturday,11,30,2,Streetcar,Mechanical,3
+2024,4,18,Wednesday,23,27,1,Streetcar,Operations,33
+2024,11,23,Tuesday,1,15,4,Streetcar,General Delay,1
+2024,5,23,Wednesday,13,42,4,Subway,General Delay,41
+2024,6,24,Saturday,16,15,2,Streetcar,General Delay,9
+2024,1,26,Thursday,13,38,3,Bus,Mechanical,20
+2024,2,22,Wednesday,17,42,4,Subway,Emergency,26
+2024,4,15,Saturday,10,4,1,Bus,Operations,33
+2024,7,9,Wednesday,12,19,1,Streetcar,Mechanical,36
+2024,1,10,Tuesday,17,43,3,Streetcar,General Delay,14
+2024,11,22,Thursday,1,21,1,Subway,Emergency,15
+2024,10,25,Wednesday,14,41,4,Streetcar,Operations,36
+2024,6,16,Thursday,19,10,4,Subway,Emergency,3
+2024,5,31,Monday,1,11,3,Subway,Mechanical,36
+2024,1,6,Saturday,0,22,2,Bus,Operations,11
+2024,1,3,Friday,22,39,4,Streetcar,Mechanical,25
+2024,10,27,Monday,5,3,1,Subway,Operations,9
+2024,1,30,Friday,6,16,2,Streetcar,General Delay,28
+2024,7,10,Thursday,16,1,4,Streetcar,General Delay,40
+2024,4,5,Thursday,16,51,2,Subway,General Delay,34
+2024,2,9,Wednesday,2,27,3,Streetcar,Operations,0
+2024,1,12,Wednesday,23,23,3,Bus,Mechanical,27
+2024,1,27,Sunday,15,1,4,Bus,Operations,34
+2024,1,22,Saturday,21,46,2,Bus,Operations,10
+2024,1,2,Monday,14,6,4,Streetcar,General Delay,45
+2024,10,5,Thursday,8,53,3,Bus,Operations,28
+2024,4,5,Friday,18,3,3,Bus,Mechanical,14
+2024,4,31,Monday,8,49,1,Streetcar,Emergency,29
+2024,6,5,Friday,19,7,3,Subway,Emergency,9
+2024,9,7,Thursday,18,7,3,Streetcar,Emergency,32
+2024,1,30,Saturday,16,35,1,Subway,General Delay,41
+2024,8,1,Monday,1,17,2,Bus,Emergency,12
+2024,1,26,Monday,9,57,2,Subway,Emergency,15
+2024,6,4,Tuesday,3,12,3,Streetcar,Mechanical,39
+2024,3,31,Wednesday,18,56,4,Subway,Mechanical,3
+2024,11,4,Thursday,0,50,1,Streetcar,Mechanical,38
+2024,7,29,Friday,20,49,2,Subway,General Delay,6
+2024,5,15,Tuesday,13,14,3,Bus,General Delay,3
+2024,10,24,Wednesday,4,3,1,Streetcar,General Delay,27
+2024,5,13,Tuesday,12,33,2,Streetcar,General Delay,19
+2024,7,3,Monday,16,11,4,Subway,Operations,46
+2024,10,23,Sunday,11,49,2,Subway,Operations,20
+2024,3,11,Friday,6,6,3,Subway,Operations,43
+2024,2,20,Monday,17,8,2,Subway,Operations,20
+2024,11,24,Saturday,22,55,4,Subway,Emergency,7
+2024,5,5,Sunday,4,41,3,Streetcar,Emergency,1
+2024,11,13,Thursday,23,16,2,Streetcar,Emergency,43
+2024,1,28,Wednesday,14,38,1,Streetcar,Mechanical,43
+2024,7,15,Tuesday,17,24,1,Streetcar,Operations,41
+2024,12,3,Sunday,1,40,2,Streetcar,Emergency,30
+2024,6,20,Wednesday,11,49,3,Bus,General Delay,25
+2024,6,11,Monday,8,15,4,Streetcar,Mechanical,15
+2024,12,3,Thursday,15,57,1,Bus,Operations,38
+2024,12,23,Friday,9,54,3,Bus,Emergency,2
+2024,9,17,Friday,23,37,3,Streetcar,Emergency,33
+2024,1,2,Tuesday,5,19,1,Streetcar,Operations,14
+2024,4,20,Tuesday,11,12,3,Bus,Mechanical,39
+2024,6,5,Sunday,8,8,1,Streetcar,General Delay,47
+2024,7,17,Thursday,2,59,4,Subway,Emergency,33
+2024,11,18,Sunday,8,8,3,Streetcar,Emergency,42
+2024,9,2,Wednesday,12,58,3,Streetcar,Operations,25
+2024,4,16,Friday,16,39,1,Streetcar,Emergency,2
+2024,2,7,Monday,22,46,2,Bus,Emergency,22
+2024,11,17,Friday,1,57,1,Subway,General Delay,17
+2024,9,25,Wednesday,23,37,2,Streetcar,Mechanical,28
+2024,9,12,Wednesday,17,47,4,Streetcar,General Delay,12
+2024,1,16,Sunday,6,26,4,Streetcar,Emergency,24
+2024,9,25,Monday,20,59,3,Bus,General Delay,28
+2024,12,30,Wednesday,14,2,2,Bus,Mechanical,31
+2024,7,3,Sunday,3,45,3,Streetcar,General Delay,14
+2024,2,24,Wednesday,18,51,3,Streetcar,Operations,29
+2024,8,22,Friday,7,0,2,Streetcar,General Delay,10
+2024,8,5,Monday,8,27,4,Subway,Emergency,2
+2024,9,29,Monday,1,38,4,Streetcar,Emergency,42
+2024,2,27,Wednesday,9,25,4,Subway,General Delay,36
+2024,6,22,Monday,23,37,4,Subway,Mechanical,17
+2024,1,23,Sunday,11,22,1,Streetcar,Operations,28
+2024,7,14,Tuesday,5,30,1,Bus,Emergency,45
+2024,2,9,Monday,14,11,2,Streetcar,Mechanical,46
+2024,5,11,Tuesday,21,38,2,Streetcar,Operations,13
+2024,12,19,Tuesday,20,17,1,Streetcar,Emergency,31
+2024,3,27,Saturday,0,31,1,Streetcar,Operations,31
+2024,1,29,Friday,12,4,2,Subway,Mechanical,30
+2024,10,28,Tuesday,21,8,3,Bus,Mechanical,42
+2024,2,8,Wednesday,22,39,3,Subway,Mechanical,16
+2024,1,17,Sunday,14,32,4,Subway,Emergency,14
+2024,2,3,Monday,9,12,1,Streetcar,Emergency,5
+2024,9,2,Tuesday,18,50,2,Bus,Operations,11
+2024,4,14,Wednesday,3,36,3,Bus,Emergency,26
+2024,6,17,Tuesday,4,21,3,Streetcar,Operations,31
+2024,11,23,Wednesday,20,59,1,Subway,General Delay,44
+2024,4,17,Monday,18,37,2,Bus,Emergency,7
+2024,2,22,Tuesday,3,53,1,Subway,Emergency,31
+2024,10,15,Thursday,20,48,3,Subway,Operations,20
+2024,1,26,Tuesday,15,51,2,Subway,Mechanical,11
+2024,3,16,Tuesday,17,21,4,Streetcar,General Delay,25
+2024,2,17,Wednesday,16,31,1,Streetcar,Mechanical,30
+2024,2,21,Thursday,12,34,4,Subway,Operations,38
+2024,11,1,Thursday,17,0,4,Subway,Emergency,6
+2024,2,14,Friday,22,58,1,Bus,General Delay,2
+2024,2,27,Saturday,9,7,2,Streetcar,General Delay,43
+2024,5,2,Saturday,18,33,4,Subway,Emergency,25
+2024,4,17,Friday,14,22,4,Subway,Mechanical,18
+2024,4,17,Monday,3,43,2,Subway,Emergency,37
+2024,2,25,Wednesday,3,58,3,Bus,Emergency,40
+2024,1,4,Monday,23,35,2,Bus,Mechanical,24
+2024,7,8,Thursday,14,22,4,Bus,Mechanical,41
+2024,2,10,Sunday,10,58,3,Bus,General Delay,35
+2024,1,12,Saturday,12,44,3,Streetcar,Emergency,26
+2024,6,4,Tuesday,21,32,4,Streetcar,Operations,37
+2024,5,21,Tuesday,11,35,3,Subway,Operations,30
+2024,5,23,Sunday,10,58,3,Streetcar,Operations,33
+2024,1,30,Monday,9,24,3,Bus,Operations,2
+2024,11,21,Sunday,13,14,4,Bus,Emergency,13
+2024,8,4,Sunday,5,20,1,Subway,Mechanical,17
+2024,5,28,Wednesday,8,18,3,Bus,Mechanical,30
+2024,4,19,Tuesday,23,57,2,Subway,General Delay,0
+2024,5,25,Friday,6,4,4,Streetcar,Emergency,4
+2024,4,15,Wednesday,10,58,2,Subway,Emergency,27
+2024,7,7,Wednesday,22,13,3,Streetcar,Mechanical,25
+2024,8,24,Monday,3,15,1,Streetcar,Emergency,36
+2024,10,26,Saturday,16,29,2,Subway,General Delay,35
+2024,4,31,Wednesday,10,51,2,Streetcar,General Delay,9
+2024,1,16,Thursday,6,55,3,Subway,General Delay,26
+2024,6,15,Saturday,12,2,2,Bus,General Delay,6
+2024,5,31,Friday,14,26,2,Subway,Mechanical,46
+2024,11,23,Wednesday,7,23,1,Bus,Mechanical,0
+2024,7,14,Tuesday,16,9,1,Streetcar,Operations,34
+2024,5,27,Sunday,9,30,1,Bus,General Delay,11
+2024,6,15,Tuesday,8,13,3,Streetcar,Operations,7
+2024,9,24,Sunday,0,5,1,Streetcar,General Delay,7
+2024,3,2,Saturday,10,14,1,Subway,Mechanical,5
+2024,9,30,Saturday,19,20,2,Subway,General Delay,41
+2024,4,10,Monday,16,9,1,Streetcar,Emergency,28
+2024,5,29,Wednesday,1,37,3,Subway,Emergency,18
+2024,12,5,Tuesday,1,0,3,Bus,Operations,42
+2024,2,18,Friday,16,16,4,Subway,General Delay,29
+2024,5,25,Tuesday,9,25,3,Streetcar,Mechanical,44
+2024,3,31,Sunday,10,42,2,Bus,Operations,36
+2024,12,23,Thursday,4,51,3,Streetcar,Operations,10
+2024,7,27,Thursday,2,4,2,Subway,Operations,40
+2024,7,26,Tuesday,14,47,1,Subway,Operations,11
+2024,10,6,Sunday,7,24,1,Bus,Operations,20
+2024,11,22,Monday,2,4,1,Subway,General Delay,22
+2024,6,11,Monday,5,42,3,Streetcar,Emergency,30
+2024,8,21,Friday,9,17,1,Subway,Emergency,35
+2024,9,2,Monday,11,49,3,Bus,Emergency,19
+2024,2,5,Sunday,18,58,3,Subway,Emergency,37
+2024,12,3,Sunday,17,25,4,Streetcar,General Delay,19
+2024,11,10,Thursday,17,29,1,Streetcar,Emergency,33
+2024,6,16,Wednesday,1,49,2,Streetcar,Operations,19
+2024,4,6,Sunday,21,52,3,Bus,General Delay,11
+2024,1,31,Monday,15,33,2,Bus,General Delay,11
+2024,9,30,Saturday,1,43,3,Streetcar,Emergency,4
+2024,6,3,Saturday,7,54,1,Streetcar,General Delay,36
+2024,10,12,Thursday,14,25,1,Bus,Mechanical,9
+2024,7,15,Thursday,22,19,3,Streetcar,Emergency,47
+2024,1,24,Friday,13,38,1,Bus,Operations,14
+2024,1,5,Thursday,12,22,4,Bus,Operations,34
+2024,6,2,Sunday,1,56,2,Subway,Emergency,20
+2024,2,29,Sunday,21,55,4,Subway,General Delay,34
+2024,9,11,Thursday,6,4,3,Streetcar,General Delay,17
+2024,3,25,Sunday,20,30,3,Subway,Operations,43
+2024,3,12,Tuesday,19,4,2,Subway,Mechanical,27
+2024,6,7,Friday,8,9,3,Streetcar,Mechanical,11
+2024,11,21,Thursday,11,38,4,Subway,Operations,31
+2024,6,22,Sunday,12,58,2,Subway,General Delay,5
+2024,6,15,Thursday,10,45,2,Bus,Mechanical,6
+2024,3,19,Tuesday,14,13,3,Subway,Mechanical,23
+2024,9,14,Thursday,13,18,2,Bus,General Delay,35
+2024,9,29,Monday,1,18,2,Streetcar,Emergency,7
+2024,1,6,Tuesday,21,28,1,Subway,General Delay,0
+2024,9,8,Wednesday,21,22,4,Subway,General Delay,29
+2024,6,14,Tuesday,19,15,2,Streetcar,Emergency,5
+2024,12,2,Friday,18,8,4,Streetcar,General Delay,7
+2024,4,21,Sunday,6,36,1,Subway,Operations,19
+2024,7,27,Sunday,10,38,4,Subway,Mechanical,33
+2024,4,13,Friday,23,3,1,Bus,Emergency,44
+2024,11,12,Thursday,5,33,1,Bus,Mechanical,1
+2024,8,12,Friday,20,48,2,Bus,Mechanical,40
+2024,1,19,Tuesday,7,19,1,Bus,Operations,26
+2024,1,1,Thursday,19,57,3,Streetcar,Emergency,9
+2024,9,6,Monday,8,38,3,Bus,Operations,4
+2024,12,1,Tuesday,23,58,1,Subway,Emergency,22
+2024,3,28,Monday,7,36,3,Subway,General Delay,2
+2024,9,7,Friday,2,51,4,Bus,Emergency,11
+2024,1,17,Wednesday,16,16,3,Subway,Operations,7
+2024,1,20,Saturday,13,37,1,Subway,Operations,6
+2024,7,10,Wednesday,13,22,3,Subway,Operations,28
+2024,8,13,Saturday,21,28,3,Subway,Operations,16
+2024,6,8,Friday,21,9,1,Bus,Operations,36
+2024,4,9,Tuesday,21,0,3,Subway,Mechanical,47
+2024,10,26,Friday,2,45,4,Streetcar,Operations,23
+2024,10,26,Saturday,16,26,2,Streetcar,Operations,27
+2024,7,25,Wednesday,3,28,1,Subway,Mechanical,45
+2024,10,22,Sunday,20,54,4,Streetcar,Mechanical,36
+2024,2,6,Friday,7,41,3,Bus,Operations,35
+2024,7,21,Tuesday,19,23,3,Subway,Mechanical,34
+2024,8,28,Sunday,18,13,1,Bus,General Delay,47
+2024,11,5,Tuesday,8,12,4,Subway,Mechanical,15
+2024,6,1,Saturday,5,51,3,Bus,Emergency,11
+2024,6,31,Tuesday,23,20,2,Streetcar,Operations,36
+2024,1,16,Tuesday,16,23,4,Streetcar,Mechanical,34
+2024,3,7,Wednesday,7,3,3,Subway,General Delay,10
+2024,7,23,Tuesday,1,47,3,Bus,Mechanical,47
+2024,1,16,Friday,17,38,4,Bus,Operations,35
+2024,11,28,Friday,8,20,3,Bus,Mechanical,21
+2024,3,1,Sunday,22,3,3,Streetcar,General Delay,33
+2024,6,20,Thursday,21,12,3,Subway,Operations,27
+2024,7,10,Sunday,13,49,2,Bus,General Delay,28
+2024,4,9,Thursday,22,39,3,Streetcar,General Delay,42
+2024,11,30,Friday,21,10,3,Bus,Mechanical,31
+2024,12,13,Saturday,10,15,4,Bus,Operations,46
+2024,9,22,Friday,15,52,2,Subway,General Delay,0
+2024,5,31,Sunday,20,15,1,Streetcar,Operations,39
+2024,11,21,Saturday,17,1,2,Subway,General Delay,22
+2024,10,7,Friday,12,7,2,Streetcar,Operations,19
+2024,6,13,Friday,18,19,3,Subway,General Delay,12
+2024,7,23,Tuesday,0,45,1,Streetcar,Mechanical,10
+2024,10,17,Tuesday,22,53,4,Subway,Mechanical,4
+2024,3,5,Wednesday,9,39,2,Streetcar,Mechanical,30
+2024,3,22,Sunday,2,26,2,Bus,Emergency,42
+2024,7,22,Sunday,21,23,2,Streetcar,Mechanical,31
+2024,7,30,Thursday,3,6,1,Subway,Operations,30
+2024,2,6,Sunday,12,23,2,Bus,Emergency,25
+2024,7,25,Saturday,22,9,3,Streetcar,General Delay,34
+2024,10,30,Friday,18,18,3,Bus,Operations,12
+2024,9,7,Saturday,21,18,2,Subway,Mechanical,19
+2024,7,19,Wednesday,13,31,3,Streetcar,Operations,10
+2024,9,15,Saturday,1,52,4,Subway,Emergency,28
+2024,9,16,Thursday,18,37,2,Bus,General Delay,31
+2024,2,4,Saturday,2,42,3,Bus,Emergency,10
+2024,9,20,Friday,21,18,1,Bus,Mechanical,2
+2024,11,11,Wednesday,19,48,3,Bus,Mechanical,3
+2024,11,15,Thursday,18,49,4,Subway,General Delay,30
+2024,4,9,Friday,19,43,1,Streetcar,Mechanical,1
+2024,12,26,Wednesday,16,59,1,Bus,Operations,32
+2024,2,19,Tuesday,21,47,2,Streetcar,Mechanical,9
+2024,9,28,Sunday,17,53,2,Subway,Emergency,31
+2024,1,20,Friday,8,11,4,Streetcar,Emergency,30
+2024,6,25,Wednesday,7,5,3,Bus,Emergency,3
+2024,7,23,Friday,10,14,2,Streetcar,Emergency,21
+2024,9,25,Tuesday,0,53,3,Subway,Mechanical,24
+2024,6,4,Sunday,8,24,3,Bus,Mechanical,14
+2024,3,27,Monday,10,50,2,Streetcar,Mechanical,18
+2024,8,23,Wednesday,23,30,1,Subway,Mechanical,5
+2024,5,7,Friday,18,34,1,Bus,Emergency,1
+2024,2,12,Monday,5,48,4,Subway,Emergency,41
+2024,4,13,Saturday,5,38,3,Bus,Operations,30
+2024,9,7,Tuesday,22,9,4,Streetcar,Mechanical,22
+2024,12,18,Saturday,18,14,2,Subway,Emergency,28
+2024,12,25,Tuesday,17,54,4,Subway,Emergency,9
+2024,6,6,Friday,21,56,4,Subway,Mechanical,0
+2024,5,3,Sunday,20,39,1,Streetcar,General Delay,42
+2024,3,28,Friday,1,43,1,Streetcar,Operations,23
+2024,2,22,Thursday,1,25,3,Bus,Mechanical,18
+2024,10,17,Tuesday,10,28,2,Subway,Mechanical,28
+2024,7,9,Saturday,2,14,4,Bus,Emergency,29
+2024,9,7,Monday,3,3,4,Bus,Mechanical,29
+2024,7,25,Monday,10,39,1,Subway,General Delay,35
+2024,8,21,Monday,13,15,2,Streetcar,General Delay,12
+2024,5,10,Sunday,7,58,3,Subway,Mechanical,34
+2024,10,6,Wednesday,18,10,1,Bus,Emergency,20
+2024,2,2,Friday,6,19,2,Subway,Operations,42
+2024,11,8,Thursday,7,44,4,Subway,Emergency,28
+2024,2,8,Thursday,5,26,3,Subway,General Delay,8
+2024,9,11,Tuesday,8,0,4,Subway,Operations,17
+2024,4,8,Wednesday,0,23,3,Streetcar,Operations,3
+2024,2,20,Tuesday,4,12,4,Streetcar,Emergency,5
+2024,9,11,Thursday,22,48,4,Streetcar,Operations,28
+2024,1,2,Saturday,18,28,3,Subway,General Delay,41
+2024,3,9,Tuesday,8,11,3,Subway,Operations,41
+2024,2,16,Saturday,20,26,3,Bus,Operations,41
+2024,5,7,Wednesday,0,39,2,Streetcar,Emergency,18
+2024,9,28,Wednesday,3,38,3,Streetcar,Mechanical,30
+2024,5,21,Friday,11,30,2,Bus,General Delay,23
+2024,9,19,Sunday,17,43,1,Bus,Mechanical,36
+2024,3,26,Saturday,13,53,3,Subway,Mechanical,25
+2024,2,1,Friday,0,38,1,Subway,Emergency,17
+2024,8,11,Tuesday,7,57,4,Bus,General Delay,42
+2024,9,16,Saturday,11,50,3,Streetcar,Mechanical,4
+2024,1,16,Thursday,8,53,3,Subway,Emergency,33
+2024,4,9,Thursday,9,0,3,Streetcar,Operations,20
+2024,2,26,Thursday,5,15,2,Subway,General Delay,22
+2024,12,10,Tuesday,3,9,4,Streetcar,Mechanical,37
+2024,6,27,Tuesday,20,28,1,Subway,General Delay,18
+2024,10,12,Wednesday,18,26,1,Bus,Operations,42
+2024,2,21,Tuesday,2,43,2,Bus,General Delay,21
+2024,4,16,Saturday,2,40,3,Streetcar,General Delay,5
+2024,4,20,Monday,8,39,4,Bus,Emergency,32
+2024,12,20,Sunday,8,37,1,Streetcar,Emergency,13
+2024,4,22,Sunday,9,32,2,Bus,Emergency,17
+2024,5,20,Monday,19,52,2,Bus,Mechanical,41
+2024,9,22,Thursday,17,20,3,Subway,Emergency,25
+2024,3,21,Monday,10,12,1,Streetcar,General Delay,10
+2024,12,1,Saturday,21,45,3,Bus,General Delay,5
+2024,7,15,Saturday,9,36,2,Streetcar,Emergency,4
+2024,2,13,Wednesday,7,11,2,Subway,General Delay,18
+2024,10,2,Sunday,6,56,4,Streetcar,Emergency,45
+2024,11,27,Saturday,20,13,3,Streetcar,Mechanical,36
+2024,3,3,Sunday,17,48,1,Streetcar,Mechanical,23
+2024,1,10,Saturday,23,43,4,Bus,Mechanical,30
+2024,6,11,Friday,14,16,1,Subway,Mechanical,43
+2024,11,6,Tuesday,22,18,3,Subway,Operations,17
+2024,11,10,Saturday,12,42,1,Subway,Emergency,29
+2024,12,31,Thursday,10,31,1,Subway,Operations,34
+2024,10,30,Sunday,1,12,3,Bus,Operations,41
+2024,12,25,Wednesday,13,58,2,Streetcar,Mechanical,3
+2024,1,13,Friday,14,24,2,Bus,Mechanical,6
+2024,11,8,Sunday,19,16,2,Subway,Emergency,37
+2024,1,9,Wednesday,17,15,3,Subway,Operations,4
+2024,8,20,Friday,7,25,3,Streetcar,Mechanical,30
+2024,11,19,Thursday,22,16,1,Subway,Emergency,25
+2024,8,12,Sunday,3,8,2,Subway,Emergency,10
+2024,4,6,Thursday,4,13,1,Subway,Mechanical,19
+2024,12,6,Tuesday,11,47,2,Subway,General Delay,0
+2024,3,28,Saturday,10,30,2,Subway,General Delay,0
+2024,11,30,Wednesday,23,57,3,Bus,Mechanical,29
+2024,4,26,Monday,9,42,3,Subway,Mechanical,38
+2024,7,5,Tuesday,0,22,2,Subway,Operations,15
+2024,9,29,Saturday,6,13,1,Subway,Operations,12
+2024,9,26,Tuesday,12,58,1,Subway,Operations,45
+2024,9,5,Sunday,16,5,2,Subway,Operations,3
+2024,7,13,Saturday,16,37,3,Bus,Operations,35
+2024,10,28,Friday,2,33,2,Bus,Mechanical,23
+2024,9,9,Monday,15,22,1,Bus,Emergency,10
+2024,2,10,Friday,6,24,2,Bus,Operations,28
+2024,3,19,Thursday,5,20,4,Subway,General Delay,14
+2024,11,29,Thursday,8,45,4,Bus,Mechanical,42
+2024,3,10,Friday,2,28,3,Bus,Operations,32
+2024,11,21,Friday,22,13,2,Bus,Operations,27
+2024,2,21,Friday,18,25,4,Bus,General Delay,2
+2024,11,16,Wednesday,11,58,1,Streetcar,Emergency,41
+2024,10,13,Wednesday,12,23,2,Bus,Operations,26
+2024,1,4,Thursday,17,58,2,Streetcar,Operations,7
+2024,5,28,Sunday,20,14,2,Bus,Operations,38
+2024,6,19,Wednesday,17,5,3,Bus,Operations,42
+2024,7,10,Friday,5,55,2,Subway,Mechanical,46
+2024,2,16,Wednesday,17,16,1,Subway,Emergency,31
+2024,8,26,Wednesday,23,45,1,Bus,Emergency,40
+2024,6,15,Friday,20,25,4,Bus,Mechanical,31
+2024,3,5,Wednesday,23,12,2,Subway,Emergency,15
+2024,1,30,Saturday,10,42,2,Subway,General Delay,10
+2024,1,28,Sunday,10,15,4,Subway,Emergency,4
+2024,2,18,Wednesday,16,37,3,Subway,Emergency,35
+2024,3,15,Saturday,5,49,1,Streetcar,General Delay,5
+2024,8,5,Tuesday,11,9,1,Streetcar,Mechanical,32
+2024,10,9,Monday,4,13,3,Bus,Mechanical,28
+2024,4,1,Saturday,15,26,1,Streetcar,Mechanical,47
+2024,2,14,Sunday,4,22,3,Bus,Mechanical,31
+2024,8,15,Sunday,19,56,2,Bus,General Delay,38
+2024,12,6,Monday,10,55,1,Streetcar,Operations,47
+2024,1,5,Saturday,21,54,3,Subway,Mechanical,12
+2024,3,13,Friday,15,48,3,Subway,Mechanical,25
+2024,5,24,Saturday,6,33,2,Streetcar,Emergency,37
+2024,9,7,Sunday,14,4,3,Bus,General Delay,28
+2024,4,2,Tuesday,8,17,2,Subway,Operations,5
+2024,3,11,Sunday,22,59,1,Streetcar,Emergency,19
+2024,11,13,Thursday,20,3,1,Streetcar,Operations,27
+2024,7,26,Wednesday,8,18,1,Subway,Emergency,45
+2024,3,15,Thursday,2,44,1,Bus,Operations,18
+2024,2,26,Thursday,21,40,4,Subway,Mechanical,9
+2024,2,21,Wednesday,7,46,2,Bus,Operations,29
+2024,12,31,Wednesday,7,29,4,Streetcar,General Delay,18
+2024,8,24,Monday,12,7,4,Subway,General Delay,35
+2024,9,26,Tuesday,17,30,1,Bus,Mechanical,2
+2024,2,16,Tuesday,23,15,3,Subway,Mechanical,47
+2024,12,3,Thursday,16,58,4,Streetcar,Operations,6
+2024,10,9,Tuesday,14,44,2,Subway,Emergency,41
+2024,6,28,Monday,14,41,4,Streetcar,General Delay,14
+2024,7,17,Friday,21,2,1,Bus,Emergency,31
+2024,5,17,Sunday,1,44,3,Streetcar,Operations,28
+2024,8,27,Friday,22,44,3,Bus,Operations,41
+2024,1,25,Tuesday,11,6,4,Subway,Emergency,41
+2024,8,6,Thursday,8,10,2,Bus,General Delay,31
+2024,4,24,Sunday,13,3,3,Bus,General Delay,40
+2024,4,20,Sunday,7,54,2,Subway,General Delay,10
+2024,4,15,Wednesday,7,58,1,Subway,Operations,1
+2024,12,31,Saturday,15,4,4,Streetcar,General Delay,18
+2024,6,25,Sunday,4,54,4,Bus,General Delay,10
+2024,5,22,Thursday,16,43,1,Bus,Emergency,12
+2024,8,4,Friday,18,31,2,Streetcar,Emergency,24
+2024,10,12,Friday,1,54,4,Subway,Emergency,22
+2024,3,18,Tuesday,18,12,4,Streetcar,Emergency,32
+2024,6,20,Friday,17,5,4,Streetcar,Operations,43
+2024,5,22,Wednesday,8,15,1,Subway,Emergency,11
+2024,8,27,Monday,2,36,2,Streetcar,Operations,32
+2024,4,26,Thursday,15,44,4,Bus,General Delay,47
+2024,3,8,Monday,0,38,4,Streetcar,Operations,13
+2024,7,19,Thursday,21,8,3,Bus,Mechanical,44
+2024,2,6,Sunday,3,38,4,Subway,Operations,10
+2024,7,8,Tuesday,15,36,4,Bus,General Delay,37
+2024,11,17,Friday,4,34,2,Bus,General Delay,24
+2024,4,31,Thursday,23,27,1,Streetcar,Emergency,30
+2024,8,8,Wednesday,0,39,3,Streetcar,Mechanical,31
+2024,1,26,Wednesday,17,38,1,Bus,Operations,11
+2024,10,3,Saturday,5,53,2,Subway,Operations,23
+2024,11,13,Wednesday,20,37,3,Streetcar,Mechanical,16
+2024,6,31,Friday,14,32,2,Streetcar,Operations,15
+2024,12,20,Tuesday,15,6,3,Streetcar,General Delay,43
+2024,9,18,Thursday,20,9,3,Subway,Mechanical,20
+2024,9,19,Sunday,4,49,2,Streetcar,Mechanical,28
+2024,9,24,Tuesday,18,3,4,Subway,Mechanical,21
+2024,5,19,Sunday,13,17,1,Subway,Operations,29
+2024,3,11,Wednesday,22,29,2,Bus,Operations,4
+2024,6,17,Monday,9,20,1,Streetcar,Operations,30
+2024,3,8,Friday,3,30,1,Streetcar,Operations,7
+2024,10,11,Wednesday,9,1,3,Subway,Emergency,8
+2024,12,25,Thursday,0,30,2,Bus,Emergency,2
+2024,2,13,Monday,18,18,2,Streetcar,Mechanical,5
+2024,3,20,Saturday,7,57,2,Subway,Mechanical,14
+2024,8,15,Tuesday,21,43,2,Subway,Mechanical,17
+2024,10,26,Sunday,18,14,3,Streetcar,General Delay,34
+2024,6,2,Friday,7,7,3,Subway,Operations,43
+2024,11,23,Saturday,14,39,3,Streetcar,Emergency,6
+2024,8,11,Friday,2,40,1,Streetcar,Mechanical,7
+2024,12,6,Saturday,2,11,1,Subway,Mechanical,32
+2024,1,30,Thursday,7,52,3,Bus,Emergency,37
+2024,4,24,Thursday,14,21,2,Streetcar,General Delay,43
+2024,8,28,Tuesday,15,55,1,Bus,General Delay,47
+2024,4,12,Thursday,0,18,3,Subway,Operations,15
+2024,5,6,Thursday,6,31,1,Bus,General Delay,47
+2024,2,19,Monday,23,39,2,Bus,Mechanical,41
+2024,9,21,Sunday,5,29,1,Streetcar,Emergency,4
+2024,2,7,Thursday,13,28,2,Subway,Mechanical,23
+2024,2,19,Tuesday,11,20,2,Subway,General Delay,19
+2024,3,13,Monday,18,56,4,Subway,Emergency,12
+2024,9,26,Friday,13,2,1,Subway,Mechanical,47
+2024,6,30,Tuesday,19,45,1,Subway,Mechanical,36
+2024,4,8,Thursday,22,41,1,Bus,General Delay,40
+2024,1,22,Tuesday,12,27,3,Bus,Emergency,21
+2024,7,14,Tuesday,18,19,2,Bus,Emergency,11
+2024,4,4,Saturday,11,58,1,Subway,Operations,20
+2024,12,2,Tuesday,22,29,4,Bus,General Delay,25
+2024,9,23,Saturday,10,43,2,Bus,Operations,39
+2024,11,27,Tuesday,13,47,1,Subway,Operations,18
+2024,11,13,Saturday,3,58,3,Bus,Emergency,33
+2024,11,31,Monday,20,53,4,Streetcar,Operations,15
+2024,8,16,Tuesday,16,26,2,Bus,Emergency,5
+2024,5,9,Wednesday,17,13,2,Subway,Emergency,34
+2024,10,2,Wednesday,2,59,4,Subway,Emergency,10
+2024,2,20,Saturday,0,30,2,Streetcar,Mechanical,36
+2024,7,16,Saturday,20,12,2,Subway,Operations,5
+2024,11,10,Tuesday,12,37,4,Streetcar,Operations,4
+2024,2,4,Friday,19,33,2,Bus,Emergency,6
+2024,11,15,Tuesday,9,24,1,Subway,Emergency,31
+2024,3,7,Wednesday,22,15,1,Bus,General Delay,8
+2024,10,1,Sunday,22,53,3,Streetcar,Mechanical,36
+2024,12,31,Sunday,20,1,4,Streetcar,Emergency,41
+2024,8,15,Sunday,1,40,3,Streetcar,Operations,2
+2024,4,16,Tuesday,18,41,2,Subway,General Delay,12
+2024,11,10,Thursday,15,18,2,Bus,Operations,34
+2024,12,8,Friday,3,45,2,Streetcar,General Delay,45
+2024,5,14,Tuesday,11,21,2,Bus,Emergency,0
+2024,4,13,Thursday,9,19,3,Subway,General Delay,17
+2024,12,26,Tuesday,9,11,1,Subway,Mechanical,1
+2024,8,1,Tuesday,10,46,2,Streetcar,Emergency,11
+2024,8,31,Tuesday,2,10,3,Subway,Emergency,19
+2024,12,4,Friday,23,28,4,Bus,Operations,9
+2024,8,2,Sunday,4,24,4,Streetcar,Mechanical,8
+2024,4,13,Thursday,11,3,4,Subway,Mechanical,17
+2024,2,13,Tuesday,2,1,3,Streetcar,General Delay,14
+2024,10,27,Thursday,14,28,4,Bus,Operations,40
+2024,9,31,Wednesday,7,32,4,Bus,Operations,2
+2024,1,19,Tuesday,11,21,4,Streetcar,General Delay,32
+2024,3,27,Friday,1,18,1,Subway,General Delay,9
+2024,11,30,Sunday,16,3,3,Bus,Mechanical,24
+2024,11,16,Saturday,12,3,3,Streetcar,Mechanical,46
+2024,3,18,Tuesday,11,41,1,Bus,Mechanical,33
+2024,7,14,Tuesday,18,47,2,Subway,Operations,44
+2024,9,21,Saturday,14,47,2,Subway,Operations,39
+2024,8,11,Thursday,1,29,2,Streetcar,Mechanical,30
+2024,4,19,Sunday,10,3,4,Bus,Emergency,7
+2024,6,9,Tuesday,0,37,3,Bus,Operations,30
+2024,4,16,Friday,9,45,1,Subway,General Delay,38
+2024,10,12,Thursday,23,8,2,Subway,Mechanical,43
+2024,7,4,Thursday,5,52,3,Bus,Operations,11
+2024,9,6,Saturday,16,44,3,Streetcar,General Delay,4
+2024,4,31,Friday,3,11,3,Streetcar,General Delay,19
+2024,12,7,Sunday,12,55,2,Bus,Emergency,43
+2024,9,28,Thursday,10,20,2,Subway,Emergency,40
+2024,12,15,Sunday,2,23,2,Streetcar,Operations,37
+2024,7,9,Friday,17,59,3,Bus,General Delay,29
+2024,3,29,Friday,10,0,4,Subway,General Delay,34
+2024,9,4,Friday,1,15,2,Subway,Emergency,12
+2024,4,19,Wednesday,1,56,3,Bus,General Delay,3
+2024,8,20,Sunday,13,51,1,Bus,General Delay,5
+2024,6,11,Thursday,16,12,3,Subway,Emergency,25
+2024,7,4,Saturday,20,15,3,Bus,Operations,33
+2024,2,11,Tuesday,18,0,1,Bus,Operations,3
+2024,10,16,Sunday,23,59,4,Streetcar,General Delay,45
+2024,7,21,Tuesday,20,29,1,Subway,Operations,16
+2024,12,21,Sunday,6,48,3,Subway,Mechanical,27
+2024,1,11,Thursday,18,36,4,Streetcar,Operations,19
+2024,8,30,Wednesday,21,10,2,Bus,General Delay,6
+2024,5,26,Friday,8,42,1,Bus,Operations,42
+2024,4,19,Friday,1,24,2,Bus,Mechanical,6
+2024,3,11,Thursday,2,29,3,Bus,General Delay,44
+2024,2,11,Saturday,16,54,4,Subway,General Delay,33
+2024,4,24,Saturday,13,30,3,Streetcar,General Delay,4
+2024,4,13,Saturday,22,48,4,Bus,Emergency,1
+2024,4,23,Sunday,5,19,3,Streetcar,General Delay,18
+2024,2,7,Thursday,20,53,4,Bus,Mechanical,33
+2024,9,12,Friday,9,35,3,Subway,Emergency,29
+2024,5,16,Sunday,4,59,2,Subway,Operations,19
+2024,12,29,Saturday,18,2,2,Streetcar,Mechanical,25
+2024,4,29,Sunday,7,41,4,Bus,Mechanical,20
+2024,6,14,Thursday,14,29,3,Bus,Mechanical,29
+2024,11,20,Friday,22,7,2,Streetcar,Operations,10
+2024,11,27,Friday,11,52,3,Streetcar,Mechanical,6
+2024,4,4,Saturday,2,43,1,Streetcar,Emergency,13
+2024,3,27,Sunday,4,50,1,Subway,Operations,0
+2024,11,26,Sunday,18,24,4,Streetcar,Emergency,9
+2024,4,17,Thursday,14,44,2,Bus,General Delay,47
+2024,8,25,Friday,8,19,3,Subway,General Delay,22
+2024,5,23,Sunday,18,16,4,Streetcar,Operations,44
+2024,9,21,Monday,0,30,1,Streetcar,Emergency,7
+2024,11,12,Saturday,22,55,2,Bus,Operations,32
+2024,5,8,Friday,20,14,4,Subway,Operations,21
+2024,7,5,Sunday,18,11,3,Subway,General Delay,37
+2024,11,29,Friday,21,6,4,Subway,Emergency,23
+2024,7,10,Wednesday,10,13,3,Streetcar,General Delay,14
+2024,8,10,Thursday,20,45,1,Subway,Mechanical,26
+2024,2,20,Wednesday,8,22,3,Subway,Mechanical,13
+2024,12,3,Saturday,17,26,1,Bus,Mechanical,18
+2024,11,13,Monday,8,41,4,Streetcar,Operations,43
+2024,7,4,Monday,0,42,1,Bus,Mechanical,44
+2024,5,27,Tuesday,18,44,1,Streetcar,Mechanical,34
+2024,1,24,Monday,1,20,2,Bus,Mechanical,8
+2024,6,7,Sunday,16,48,1,Subway,General Delay,42
+2024,7,10,Thursday,5,27,3,Subway,Operations,38
+2024,12,25,Wednesday,12,33,4,Subway,Mechanical,3
+2024,1,27,Monday,6,5,2,Streetcar,Emergency,5
+2024,12,5,Saturday,11,46,2,Streetcar,General Delay,11
+2024,1,3,Friday,1,7,3,Streetcar,Mechanical,44
+2024,11,24,Saturday,22,33,4,Bus,Emergency,42
+2024,9,15,Sunday,1,4,4,Subway,Mechanical,32
+2024,2,28,Sunday,19,53,3,Streetcar,Emergency,43
+2024,3,30,Thursday,11,51,2,Subway,General Delay,23
+2024,6,19,Friday,5,22,4,Subway,Operations,12
+2024,3,18,Wednesday,9,53,1,Bus,General Delay,32
+2024,8,24,Wednesday,3,13,3,Subway,General Delay,47
+2024,8,11,Tuesday,3,43,2,Subway,General Delay,22
+2024,6,26,Friday,9,23,4,Streetcar,Mechanical,42
+2024,10,3,Sunday,2,4,3,Subway,Emergency,43
+2024,10,27,Saturday,2,46,1,Streetcar,Mechanical,24
+2024,7,23,Tuesday,20,4,2,Streetcar,Emergency,42
+2024,10,13,Sunday,4,50,3,Streetcar,Operations,35
+2024,1,5,Friday,16,13,1,Subway,General Delay,16
+2024,8,27,Sunday,7,8,1,Streetcar,General Delay,28
+2024,3,2,Sunday,23,49,3,Subway,Mechanical,1
+2024,7,11,Tuesday,2,4,2,Bus,General Delay,29
+2024,10,31,Friday,18,1,1,Subway,Operations,19
+2024,2,23,Monday,21,2,4,Streetcar,Mechanical,27
+2024,6,19,Wednesday,23,8,3,Streetcar,General Delay,17
+2024,6,30,Friday,4,22,1,Subway,Operations,13
+2024,3,14,Thursday,6,45,1,Subway,General Delay,11
+2024,1,6,Sunday,9,48,4,Streetcar,Emergency,46
+2024,8,16,Saturday,22,2,4,Streetcar,Mechanical,15
+2024,10,15,Tuesday,9,26,1,Bus,Emergency,39
+2024,3,12,Sunday,23,12,2,Bus,Operations,40
+2024,4,24,Saturday,23,16,4,Streetcar,Mechanical,6
+2024,6,28,Monday,0,53,3,Bus,General Delay,7
+2024,10,26,Tuesday,9,6,1,Subway,Mechanical,26
+2024,7,28,Wednesday,16,19,3,Bus,Mechanical,47
+2024,2,23,Saturday,20,53,2,Bus,Mechanical,10
+2024,9,18,Monday,6,53,2,Bus,Operations,6
+2024,5,28,Thursday,14,59,3,Subway,Mechanical,7
+2024,3,4,Tuesday,1,11,4,Streetcar,Mechanical,8
+2024,3,3,Thursday,16,10,4,Streetcar,General Delay,31
+2024,9,4,Sunday,21,55,3,Bus,Mechanical,42
+2024,10,10,Monday,9,7,2,Streetcar,Operations,23
+2024,2,16,Sunday,16,22,4,Streetcar,Emergency,9
+2024,8,13,Monday,21,34,2,Subway,Emergency,15
+2024,12,15,Tuesday,0,32,2,Bus,Mechanical,47
+2024,6,2,Friday,4,47,3,Bus,Emergency,41
+2024,5,18,Saturday,18,10,2,Bus,Mechanical,28
+2024,2,9,Saturday,5,48,3,Streetcar,Emergency,31
+2024,10,26,Tuesday,7,36,3,Subway,General Delay,7
+2024,6,21,Friday,15,40,1,Bus,General Delay,45
+2024,8,26,Monday,6,18,3,Streetcar,Emergency,19
+2024,2,20,Monday,15,16,3,Streetcar,Operations,20
+2024,3,27,Saturday,2,31,3,Streetcar,Operations,0
+2024,6,27,Thursday,22,39,1,Subway,General Delay,0
+2024,7,12,Friday,15,19,2,Subway,Emergency,35
+2024,11,27,Monday,13,20,1,Streetcar,Operations,5
+2024,9,7,Sunday,1,41,3,Streetcar,Operations,10
+2024,11,8,Saturday,6,22,4,Streetcar,Mechanical,30
+2024,8,11,Sunday,2,16,2,Bus,Operations,44
+2024,6,16,Monday,22,42,2,Bus,Operations,34
+2024,7,22,Saturday,21,52,1,Bus,Emergency,28
+2024,1,21,Sunday,16,52,1,Bus,Mechanical,10
+2024,8,13,Thursday,5,11,4,Subway,General Delay,28
+2024,11,23,Sunday,0,49,3,Streetcar,Emergency,41
+2024,5,1,Tuesday,9,52,4,Streetcar,Emergency,44
+2024,7,26,Thursday,18,21,2,Bus,Mechanical,42
+2024,9,5,Sunday,18,16,1,Bus,Operations,22
+2024,3,31,Sunday,13,23,4,Bus,Emergency,25
+2024,11,8,Monday,12,19,2,Bus,Emergency,35
+2024,11,20,Monday,10,31,1,Subway,Operations,38
+2024,11,27,Monday,16,35,2,Bus,General Delay,34
+2024,5,15,Monday,6,21,3,Streetcar,Operations,38
+2024,1,4,Tuesday,7,10,1,Streetcar,Mechanical,10
+2024,12,26,Saturday,19,42,3,Subway,Mechanical,13
+2024,1,26,Thursday,15,8,2,Bus,Operations,30
+2024,5,23,Sunday,17,30,4,Subway,Emergency,25
+2024,12,24,Sunday,15,33,1,Bus,General Delay,32
+2024,8,14,Saturday,4,33,3,Subway,Operations,17
+2024,12,9,Thursday,23,29,4,Bus,Operations,47
+2024,1,12,Monday,16,28,4,Streetcar,General Delay,17
+2024,11,24,Thursday,17,26,2,Bus,Emergency,0
+2024,4,26,Wednesday,15,15,4,Bus,Emergency,39
+2024,3,27,Saturday,12,54,3,Subway,Emergency,46
+2024,1,10,Wednesday,13,3,2,Subway,Mechanical,29
+2024,12,13,Sunday,17,58,2,Subway,Emergency,11
+2024,1,5,Wednesday,2,45,4,Streetcar,Emergency,8
+2024,12,8,Tuesday,6,40,3,Streetcar,Operations,17
+2024,9,8,Sunday,3,18,2,Streetcar,General Delay,9
+2024,6,1,Thursday,11,34,4,Bus,General Delay,32
+2024,9,13,Wednesday,5,35,1,Streetcar,General Delay,1
+2024,10,5,Saturday,5,13,2,Subway,Operations,24
+2024,8,31,Tuesday,7,3,1,Streetcar,Operations,38
+2024,8,3,Thursday,12,43,3,Subway,General Delay,27
+2024,10,9,Friday,14,31,4,Subway,Mechanical,15
+2024,11,5,Monday,5,3,1,Bus,Operations,8
+2024,12,2,Wednesday,15,53,2,Bus,Mechanical,32
+2024,5,23,Thursday,14,49,4,Subway,General Delay,46
+2024,12,5,Sunday,0,23,1,Bus,Operations,8
+2024,7,23,Friday,0,40,1,Bus,Operations,20
+2024,12,16,Friday,1,42,4,Subway,Operations,8
+2024,3,19,Sunday,5,21,2,Streetcar,Operations,44
+2024,1,17,Saturday,5,53,1,Bus,Emergency,44
+2024,11,31,Tuesday,13,39,1,Streetcar,Emergency,41
+2024,2,7,Friday,11,4,4,Bus,Operations,16
+2024,4,2,Tuesday,18,54,1,Streetcar,Operations,15
+2024,5,27,Saturday,17,52,3,Streetcar,General Delay,13
+2024,6,22,Friday,12,19,1,Bus,Operations,8
+2024,11,21,Saturday,17,35,1,Bus,Emergency,40
+2024,3,28,Saturday,15,56,4,Streetcar,General Delay,20
+2024,4,3,Tuesday,4,46,2,Bus,General Delay,7
+2024,2,3,Sunday,22,35,4,Streetcar,Emergency,21
+2024,8,28,Thursday,8,25,2,Subway,Emergency,8
+2024,8,26,Monday,12,33,1,Subway,Mechanical,45
+2024,2,17,Friday,8,0,1,Streetcar,Mechanical,0
+2024,2,27,Saturday,11,24,3,Subway,Mechanical,30
+2024,2,22,Saturday,20,18,3,Bus,Mechanical,5
+2024,6,12,Saturday,21,46,3,Bus,Mechanical,17
+2024,2,26,Sunday,6,51,4,Bus,General Delay,19
+2024,4,12,Wednesday,5,39,1,Subway,General Delay,8
+2024,10,13,Wednesday,14,45,4,Streetcar,Operations,37
+2024,1,4,Monday,23,53,2,Streetcar,Operations,22
+2024,12,26,Thursday,20,16,3,Bus,Emergency,13
+2024,4,8,Wednesday,0,7,1,Subway,Mechanical,19
+2024,8,28,Sunday,8,16,2,Subway,Emergency,21
+2024,11,15,Friday,13,34,1,Bus,Emergency,41
+2024,4,25,Monday,17,1,1,Subway,Mechanical,15
+2024,2,25,Wednesday,1,47,3,Bus,General Delay,12
+2024,12,23,Monday,15,27,1,Streetcar,Emergency,10
+2024,9,26,Saturday,8,10,2,Subway,Mechanical,7
+2024,11,5,Thursday,21,45,3,Streetcar,Mechanical,1
+2024,5,15,Sunday,19,55,2,Streetcar,Emergency,38
+2024,1,23,Thursday,9,27,4,Streetcar,General Delay,13
+2024,12,8,Thursday,23,45,2,Bus,Operations,27
+2024,8,21,Thursday,14,36,4,Streetcar,General Delay,7
+2024,4,16,Tuesday,19,5,4,Bus,Mechanical,21
+2024,2,31,Sunday,9,34,2,Subway,Emergency,22
+2024,1,20,Sunday,13,20,2,Bus,Emergency,16
+2024,11,19,Wednesday,10,6,3,Bus,Operations,47
+2024,9,17,Monday,21,25,1,Bus,Emergency,25
+2024,10,27,Friday,12,51,1,Streetcar,Emergency,35
+2024,10,13,Sunday,0,9,2,Streetcar,Emergency,11
+2024,4,14,Tuesday,22,47,2,Bus,Mechanical,45
+2024,2,18,Sunday,17,28,1,Bus,General Delay,29
+2024,3,23,Tuesday,11,48,1,Bus,General Delay,29
+2024,2,24,Friday,15,37,1,Streetcar,Operations,15
+2024,7,25,Saturday,19,11,2,Subway,Emergency,41
+2024,6,10,Sunday,19,37,4,Subway,General Delay,40
+2024,3,4,Saturday,14,53,4,Subway,Emergency,33
+2024,3,12,Monday,18,44,4,Subway,General Delay,40
+2024,3,9,Saturday,4,26,3,Streetcar,Mechanical,35
+2024,8,18,Wednesday,0,12,4,Subway,General Delay,41
+2024,5,1,Friday,7,18,3,Subway,Mechanical,1
+2024,6,14,Wednesday,3,58,1,Streetcar,Mechanical,46
+2024,5,15,Monday,8,5,4,Subway,Emergency,22
+2024,5,3,Friday,17,51,2,Subway,General Delay,1
+2024,4,14,Tuesday,17,25,2,Streetcar,Emergency,20
+2024,4,31,Sunday,20,23,3,Streetcar,Operations,10
+2024,12,28,Saturday,7,34,1,Streetcar,Emergency,44
+2024,8,29,Thursday,8,17,4,Bus,Emergency,17
+2024,1,19,Wednesday,9,21,3,Streetcar,Mechanical,4
+2024,6,16,Sunday,8,8,1,Subway,Emergency,41
+2024,3,24,Tuesday,11,58,1,Subway,Mechanical,46
+2024,4,3,Thursday,10,23,2,Subway,Emergency,12
+2024,9,22,Monday,22,35,3,Streetcar,Mechanical,20
+2024,2,17,Saturday,22,4,3,Streetcar,General Delay,37
+2024,1,17,Friday,19,30,2,Streetcar,General Delay,44
+2024,11,11,Thursday,14,52,3,Bus,General Delay,39
+2024,8,6,Friday,7,21,1,Bus,Operations,2
+2024,2,22,Saturday,18,34,1,Streetcar,General Delay,41

@@ -1,52 +1,35 @@
 #### Preamble ####
-# Purpose: Simulates a dataset of Australian electoral divisions, including the 
-  #state and party that won each division.
-# Author: Rohan Alexander
-# Date: 26 September 2024
-# Contact: rohan.alexander@utoronto.ca
+# Purpose: Simulates a dataset of bus, subway, and streetcar
+# Author: Claire Chang
+# Date: November 26 2024
+# Contact: claire.chang@mail.utoronto.ca
 # License: MIT
-# Pre-requisites: The `tidyverse` package must be installed
-# Any other information needed? Make sure you are in the `starter_folder` rproj
+# Pre-requisites: download and clean data 
+# Any other information needed? None.
 
 
 #### Workspace setup ####
 library(tidyverse)
-set.seed(853)
-
+set.seed(304)
 
 #### Simulate data ####
-# State names
-states <- c(
-  "New South Wales",
-  "Victoria",
-  "Queensland",
-  "South Australia",
-  "Western Australia",
-  "Tasmania",
-  "Northern Territory",
-  "Australian Capital Territory"
-)
 
-# Political parties
-parties <- c("Labor", "Liberal", "Greens", "National", "Other")
+num_obs <- 1000 
 
-# Create a dataset by randomly assigning states and parties to divisions
-analysis_data <- tibble(
-  division = paste("Division", 1:151),  # Add "Division" to make it a character
-  state = sample(
-    states,
-    size = 151,
-    replace = TRUE,
-    prob = c(0.25, 0.25, 0.15, 0.1, 0.1, 0.1, 0.025, 0.025) # Rough state population distribution
-  ),
-  party = sample(
-    parties,
-    size = 151,
-    replace = TRUE,
-    prob = c(0.40, 0.40, 0.05, 0.1, 0.05) # Rough party distribution
+simulated_data <- 
+  tibble(
+    year = 2024,
+    month = sample(1:12, num_obs, replace = TRUE),
+    day = sample(1:31, num_obs, replace = TRUE),
+    weekday = sample(c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",
+                       "Friday", "Saturday"), num_obs, replace = TRUE),
+    hour = sample(0:23, num_obs, replace = TRUE),
+    minute = sample(0:59, num_obs, replace = TRUE),
+    line = sample(c("1", "2", "3","4"), num_obs, replace = TRUE),
+    Transit_mode = sample(c("Subway", "Bus", "Streetcar"), num_obs, replace = TRUE),
+    incident = sample(c("Mechanical", "Operations", "General Delay", "Emergency"), num_obs, replace = TRUE),
+    delay = sample(0:47, num_obs, replace = TRUE),
   )
-)
-
 
 #### Save data ####
-write_csv(analysis_data, "data/00-simulated_data/simulated_data.csv")
+write_csv(simulated_data, "data/00-simulated_data/simulated_data.csv")

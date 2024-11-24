@@ -1,89 +1,73 @@
 #### Preamble ####
-# Purpose: Tests the structure and validity of the simulated Australian 
-  #electoral divisions dataset.
-# Author: Rohan Alexander
-# Date: 26 September 2024
-# Contact: rohan.alexander@utoronto.ca
+# Purpose: Tests the structure and validity of the simulated TTC bus, subway, and streetcar dataset.
+# Author: Claire Chang
+# Date: November 26 2024
+# Contact: claire.chang@mail.utoronto.ca
 # License: MIT
 # Pre-requisites: 
   # - The `tidyverse` package must be installed and loaded
   # - 00-simulate_data.R must have been run
-# Any other information needed? Make sure you are in the `starter_folder` rproj
+# Any other information needed? None. 
 
 
 #### Workspace setup ####
+library(testthat)
 library(tidyverse)
 
-analysis_data <- read_csv("data/00-simulated_data/simulated_data.csv")
+#### Load simulated data ####
+simulated_data <- read_csv("data/00-simulated_data/simulated_data.csv")
 
-# Test if the data was successfully loaded
-if (exists("analysis_data")) {
-  message("Test Passed: The dataset was successfully loaded.")
-} else {
-  stop("Test Failed: The dataset could not be loaded.")
-}
+#### Tests ####
 
+# Test that the dataset has the correct number of rows
+test_that("Dataset has 1000 rows", {
+  expect_equal(nrow(simulated_data), 1000)
+})
 
-#### Test data ####
+# Test that the 'month' column contains values from 1 to 12
+test_that("Month column contains values from 1 to 12", {
+  expect_true(all(simulated_data$month %in% 1:12))
+})
 
-# Check if the dataset has 151 rows
-if (nrow(analysis_data) == 151) {
-  message("Test Passed: The dataset has 151 rows.")
-} else {
-  stop("Test Failed: The dataset does not have 151 rows.")
-}
+# Test that the 'day' column contains values from 1 to 31
+test_that("Day column contains values from 1 to 31", {
+  expect_true(all(simulated_data$day %in% 1:31))
+})
 
-# Check if the dataset has 3 columns
-if (ncol(analysis_data) == 3) {
-  message("Test Passed: The dataset has 3 columns.")
-} else {
-  stop("Test Failed: The dataset does not have 3 columns.")
-}
+# Test that the 'weekday' column contains valid day names
+test_that("Weekday column contains valid day names", {
+  valid_weekdays <- c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
+  expect_true(all(simulated_data$weekday %in% valid_weekdays))
+})
 
-# Check if all values in the 'division' column are unique
-if (n_distinct(analysis_data$division) == nrow(analysis_data)) {
-  message("Test Passed: All values in 'division' are unique.")
-} else {
-  stop("Test Failed: The 'division' column contains duplicate values.")
-}
+# Test that the 'hour' column contains values from 0 to 23
+test_that("Hour column contains values from 0 to 23", {
+  expect_true(all(simulated_data$hour %in% 0:23))
+})
 
-# Check if the 'state' column contains only valid Australian state names
-valid_states <- c("New South Wales", "Victoria", "Queensland", "South Australia", 
-                  "Western Australia", "Tasmania", "Northern Territory", 
-                  "Australian Capital Territory")
+# Test that the 'minute' column contains values from 0 to 59
+test_that("Minute column contains values from 0 to 59", {
+  expect_true(all(simulated_data$minute %in% 0:59))
+})
 
-if (all(analysis_data$state %in% valid_states)) {
-  message("Test Passed: The 'state' column contains only valid Australian state names.")
-} else {
-  stop("Test Failed: The 'state' column contains invalid state names.")
-}
+# Test that the 'line' column contains only valid line numbers
+test_that("Line column contains valid line numbers (1, 2, 3)", {
+  expect_true(all(simulated_data$line %in% c("1", "2", "3")))
+})
 
-# Check if the 'party' column contains only valid party names
-valid_parties <- c("Labor", "Liberal", "Greens", "National", "Other")
+# Test that the 'Transit_mode' column contains valid transit types
+test_that("Transit_mode column contains valid transit types", {
+  valid_modes <- c("Subway", "Bus", "Streetcar")
+  expect_true(all(simulated_data$Transit_mode %in% valid_modes))
+})
 
-if (all(analysis_data$party %in% valid_parties)) {
-  message("Test Passed: The 'party' column contains only valid party names.")
-} else {
-  stop("Test Failed: The 'party' column contains invalid party names.")
-}
+# Test that the 'incident' column contains valid incident types
+test_that("Incident column contains valid incident types", {
+  valid_incidents <- c("Mechanical", "Operations", "General Delay", "Emergency")
+  expect_true(all(simulated_data$incident %in% valid_incidents))
+})
 
-# Check if there are any missing values in the dataset
-if (all(!is.na(analysis_data))) {
-  message("Test Passed: The dataset contains no missing values.")
-} else {
-  stop("Test Failed: The dataset contains missing values.")
-}
-
-# Check if there are no empty strings in 'division', 'state', and 'party' columns
-if (all(analysis_data$division != "" & analysis_data$state != "" & analysis_data$party != "")) {
-  message("Test Passed: There are no empty strings in 'division', 'state', or 'party'.")
-} else {
-  stop("Test Failed: There are empty strings in one or more columns.")
-}
-
-# Check if the 'party' column has at least two unique values
-if (n_distinct(analysis_data$party) >= 2) {
-  message("Test Passed: The 'party' column contains at least two unique values.")
-} else {
-  stop("Test Failed: The 'party' column contains less than two unique values.")
-}
+# Test that the 'delay' column contains values from 0 to 47 minutes
+test_that("Delay column contains values from 0 to 47 minutes", {
+  expect_true(all(simulated_data$delay %in% 0:47))
+})
