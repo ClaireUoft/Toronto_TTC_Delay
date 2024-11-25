@@ -25,7 +25,7 @@ simulated_data <-
                        "Friday", "Saturday"), num_obs, replace = TRUE),
     hour = sample(0:23, num_obs, replace = TRUE),
     minute = sample(0:59, num_obs, replace = TRUE),
-    line = sample(c("1", "2", "3","4"), num_obs, replace = TRUE),
+    line = sample(c("1", "2", "3"), num_obs, replace = TRUE),
     Transit_mode = sample(c("Subway", "Bus", "Streetcar"), num_obs, replace = TRUE),
     incident = sample(c("Mechanical", "Operations", "General Delay", "Emergency"), num_obs, replace = TRUE),
     delay = sample(0:47, num_obs, replace = TRUE),

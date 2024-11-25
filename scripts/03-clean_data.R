@@ -76,7 +76,7 @@ clean_data_bus <- raw_data_bus |>
 combined_data <- bind_rows(clean_data_bus, clean_data_streetcar, clean_data_subway)
 
 #Fix some categories
-combined_data <- combined_data |> mutate(
+cleaned_combined_data <- combined_data |> mutate(
   Incident =
     case_match(
       Incident,
@@ -101,10 +101,9 @@ combined_data <- combined_data |> mutate(
       "NA" ~ "N/A"
     )
 )
-
-combined_data
+cleaned_combined_data
 
 #### Save data ####
-write_parquet (x = combined_data,
-               sink = "data/02-analysis_data/analysis_data.parquet")
+write_parquet (x = cleaned_combined_data,
+               sink = "data/02-analysis_data/cleaned_combined_data.parquet")
  
