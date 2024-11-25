@@ -15,7 +15,7 @@ The repo is structured as:
     - `raw_data_streetcar.csv`
     - `raw_data_subway.csv`
 -   `02-data/analysis_data` contains the cleaned dataset that was constructed.
-    -`analysis_data.parquet`
+    - `analysis_data.parquet`
 -   `model` contains fitted models. 
 -   `other` contains details about LLM chat interactions and sketches.
 -   `paper` contains the files used to generate the paper, including the Quarto document and reference bibliography file, as well as the PDF of the paper. 
