@@ -8,8 +8,14 @@ This research investigates the frequency and duration of delays across different
 
 The repo is structured as:
 
--   `data/raw_data` contains the raw data as obtained from opendatatoronto.
--   `data/analysis_data` contains the cleaned dataset that was constructed.
+-   `00-simulated_data/`: Contains the simulated data generated for model testing.
+    - `simulated_data.csv`
+-   `01-data/raw_data` contains the raw data as obtained from opendatatoronto.
+    - `raw_data_bus.csv`
+    - `raw_data_streetcar.csv`
+    - `raw_data_subway.csv`
+-   `02-data/analysis_data` contains the cleaned dataset that was constructed.
+    -`analysis_data.parquet`
 -   `model` contains fitted models. 
 -   `other` contains details about LLM chat interactions and sketches.
 -   `paper` contains the files used to generate the paper, including the Quarto document and reference bibliography file, as well as the PDF of the paper. 
