@@ -20,7 +20,9 @@ The repo is structured as:
 -   `other` contains details about LLM chat interactions and sketches.
 -   `paper` contains the files used to generate the paper, including the Quarto document and reference bibliography file, as well as the PDF of the paper. 
 -   `scripts` contains the R scripts used to simulate, test simulate, download, clean data, test analysis, EDA, model, and replications.
-
+- `.gitignore`: Specifies files to ignore in version control.
+- `Toronto_TTC_Transportation.Rproj`: The R project file.
+- `README.md`: This file.
 
 ## Statement on LLM usage
 
