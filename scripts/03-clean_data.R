@@ -4,19 +4,20 @@
 # Date: November 26 2024
 # Contact: claire.chang@mail.utoronto.ca
 # License: MIT
-# Pre-requisites: Need to have downloaded the data
+# Pre-requisites: The `tidyverse`, 'here', and 'arrow' packages must be installed
 # Any other information needed? Knowledge of existing streetcar lines
 
 
 #### Workspace setup ####
 library(tidyverse)
+library(here)
 library(arrow)
 
 #### Clean data ####
 
-raw_data_bus <- read_csv("data/01-raw_data/raw_data_bus.csv")
-raw_data_streetcar <- read_csv("data/01-raw_data/raw_data_streetcar.csv")
-raw_data_subway <- read_csv("data/01-raw_data/raw_data_subway.csv")
+raw_data_bus <- read_csv(here::here("data/01-raw_data/raw_data_bus.csv"))
+raw_data_streetcar <- read_csv(here::here("data/01-raw_data/raw_data_streetcar.csv"))
+raw_data_subway <- read_csv(here::here("data/01-raw_data/raw_data_subway.csv"))
 
 ## Add Type of Vehicle ##
 raw_data_subway$Transit_mode <- "Subway"
@@ -104,6 +105,5 @@ cleaned_combined_data <- combined_data |> mutate(
 cleaned_combined_data
 
 #### Save data ####
-write_parquet (x = cleaned_combined_data,
-               sink = "data/02-analysis_data/cleaned_combined_data.parquet")
+write_parquet (x = cleaned_combined_data, here::here("data/02-analysis_data/cleaned_combined_data.parquet"))
  

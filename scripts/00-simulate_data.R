@@ -4,13 +4,15 @@
 # Date: November 26 2024
 # Contact: claire.chang@mail.utoronto.ca
 # License: MIT
-# Pre-requisites: download and clean data 
+# Pre-requisites: Ensure the `tidyverse` and `here`packages are installed.
 # Any other information needed? None.
 
 
 #### Workspace setup ####
 library(tidyverse)
-set.seed(304)
+library(here)
+
+set.seed(304) # Ensure that the random numbers are reproducible
 
 #### Simulate data ####
 
@@ -32,4 +34,4 @@ simulated_data <-
   )
 
 #### Save data ####
-write_csv(simulated_data, "data/00-simulated_data/simulated_data.csv")
+write_csv(simulated_data, here::here("data/00-simulated_data/simulated_data.csv"))

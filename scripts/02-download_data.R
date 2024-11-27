@@ -3,13 +3,13 @@
 # Author: Claire Chang
 # Date: November 26 2024
 # Contact: claire.chang@mail.utoronto.ca
-# License: MIT
-# Pre-requisites: None.
+# License: The `tidyverse` package must be installed
 # Any other information needed? N/A
 
 
 #### Workspace setup ####
 library(opendatatoronto)
+library(here)
 library(tidyverse)
 
 #### Download data ####
@@ -30,6 +30,6 @@ streetcar_data <- list_package_resources("b68cb71b-44a7-4394-97e2-5d2f41462a5d")
   get_resource()
 
 #### Save data ####
-write_csv(bus_data, "data/01-raw_data/raw_data_bus.csv")
-write_csv(subway_data,"data/01-raw_data/raw_data_subway.csv")
-write_csv(streetcar_data, "data/01-raw_data/raw_data_streetcar.csv")
+write_csv(bus_data, here::here("data/01-raw_data/raw_data_bus.csv"))
+write_csv(subway_data, here::here("data/01-raw_data/raw_data_subway.csv"))
+write_csv(streetcar_data, here::here ("data/01-raw_data/raw_data_streetcar.csv"))
