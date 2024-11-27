@@ -1,14 +1,17 @@
 ---
 title: "Behind the Delays: Exploring Variations in Toronto’s Transit Disruptions"
-subtitle: "A Comparative Analysis of Delay Frequency and Duration Across TTC Subway, Streetcar, and Bus Systems "
+subtitle: "A Comparative Analysis of Delay  Duration Across TTC Subway, Streetcar, and Bus Systems "
 author: 
   - Claire Chang
 thanks: "Code and data are available at: [https://github.com/ClaireUoft/Toronto_TTC_Transportation)."
 date: today
 date-format: long
-abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
-format: pdf
-number-sections: true
+abstract: "This paper uses a Bayesian Linear Regression Model to examine which Toronto Transit Commission (TTC) transit mode—subway, streetcar, or bus—experiences the highest frequency and duration of delays. We found that [summarize main finding here—e.g., buses experience significantly longer delays compared to subways and streetcars]. This finding is important because it highlights critical areas where transit improvements could alleviate the impact of delays on daily commuters. Overall, our study provides valuable insights into TTC transit reliability, informing efforts to enhance urban transportation efficiency and passenger experience."
+format: 
+  pdf:
+    toc: true
+    number-sections: true
+    colorlinks: true
 bibliography: references.bib
 ---
 
@@ -25,14 +28,14 @@ library(here)
 library(ggplot2)
 library(dplyr)
 library(knitr)
+library(kableExtra)
 
 # Load cleaned datasets
 cleaned_combined_data <-read_parquet(here::here("data/02-analysis_data/cleaned_combined_data.parquet"))
 
 # Load Model 1
-model1 <- readRDS(here::here("/Users/claire/Downloads/Toronto_Transportation-main 2/models/first_model.rds"))
+model1 <- readRDS(here::here("models/first_model.rds"))
 ```
-
 
 # Introduction
 
@@ -46,51 +49,219 @@ Why it matters paragraph
 
 The remainder of this paper is structured as follows. @sec-data discusses the data used for this analysis, including key variables and sources, with particular attention to the quality metrics that affect polling accuracy. @sec-model outlines our modeling approach..., incorporating lessons learned from recent electoral cycles. Our predictions are under section of each model. @sec-discuss discusses the implications of our findings and suggests directions for future research. Finally, @sec-appendix evaluates methodology and survey copy.
 
-
-
 # Data {#sec-data}
 
 ## Overview
 
-In this project, we used data from the opendatatoronto dataset created by [@opendatatoronto]. This dataset provided bus, subway, streetcar records essential for our analysis. In this project, we used R[@citeR] and several R packages for data processing, analysis, and visualization. Specifically, tidyverse [@tidyverse], arrow[@arrow], here[@here], ggplot2[@ggplot2], while dplyr[@dplyr] was key for data manipulation tasks. For dynamic report generation, knitr[@knitr] used, providing enhanced formatting for outputs. Together, these packages enabled efficient data cleaning, analysis, and visualization throughout the study.
-
-
-## Overview text
+In this project, we used data from the opendatatoronto dataset created by [@opendatatoronto]. This dataset provided bus, subway, streetcar records essential for our analysis. In this project, we used R[@citeR] and several R packages for data processing, analysis, and visualization. Specifically, tidyverse [@tidyverse], arrow[@arrow], here[@here], ggplot2[@ggplot2], while dplyr[@dplyr] was key for data manipulation tasks. For dynamic report generation, knitr[@knitr] and kableExtra [@kableExtra] used, providing enhanced formatting for outputs. Together, these packages enabled efficient data cleaning, analysis, and visualization throughout the study.
 
 ## Measurement
-	
+
 Some paragraphs about how we go from a phenomena in the world to an entry in the dataset.
+
+```{r}
+#| label: tbl-cleaned-data-preview
+#| tbl-cap: Preview of Cleaned Dataset for Bus, Subway, and Streetcar (One Example Each)
+#| echo: false
+#| warning: false
+#| message: false
+
+# Filter the dataset and ensure at least one row for each mode: bus, subway, streetcar
+filtered_data <- cleaned_combined_data %>%
+  filter(Transit_mode %in% c("Bus", "Subway", "Streetcar")) %>%
+  group_by(Transit_mode) %>%
+  slice_head(n = 1) # Get the first row for each Transit_mode group
+
+# Display the filtered dataset
+filtered_data |>
+  kable() |>
+  kable_styling(
+    font_size = 6,
+    latex_options = c("scale_down")
+  ) |>
+  column_spec(1, width = "2.5cm")
+
+```
 
 ## Outcome variables
 
-Add graphs, tables and text. Use sub-sub-headings for each outcome variable or update the subheading to be singular.
+### Delay Duration (Min Delay)
 
+The main outcome variable in this study is the duration of delays, measured in minutes (Min Delay). This variable quantifies the length of each delay experienced by the TTC's different transit modes (subway, streetcar, bus). The primary goal of the analysis is to determine which transit mode exhibits the highest average delay duration.
 
+To visualize the distribution of delay durations, a histogram @fig-histogram-delays is presented to provide an overview of the range of delay durations for each transit mode. This figure highlights the spread and common ranges of delay times, allowing us to observe whether there are particularly long delays for any given mode.
 
+```{r}
+#| label: fig-histogram-delays
+#| fig-cap: "Histogram of Delay Duration (Filtered at 45 Minutes)"
+#| echo: false
+#| warning: false
 
-Talk way more about it. 
+# Filtering delays that are greater than 120 minutes
+filtered_data <- cleaned_combined_data %>%
+  filter(`Min Delay` <= 45)
+
+# Plot histogram with the filtered data
+ggplot(filtered_data, aes(x = `Min Delay`)) +
+  geom_histogram(binwidth = 5, fill = "skyblue", color = "black") +
+  labs(
+    title = "Histogram of Delay Duration",
+    x = "Delay Duration (Minutes)",
+    y = "Frequency"
+  ) +
+  theme_minimal()
+
+```
+
+Lastly, @fig-boxplot-delays displays a boxplot comparing delay durations across subway, streetcar, and bus transit modes. The boxplot offers insights into the median delays and potential outliers that may suggest unusual or extreme events, while showing variability in delay times across the different transit modes.
+
+```{r}
+#| label: fig-boxplot-delays
+#| fig-cap: "Boxplot of Delay Duration by Transit Mode (Filtered by IQR)"
+#| echo: false
+#| warning: false
+
+# Calculate IQR for Min Delay
+delay_iqr <- cleaned_combined_data %>%
+  summarise(
+    Q1 = quantile(`Min Delay`, 0.25, na.rm = TRUE),
+    Q3 = quantile(`Min Delay`, 0.75, na.rm = TRUE)
+  )
+
+iqr_value <- delay_iqr$Q3 - delay_iqr$Q1
+upper_bound <- delay_iqr$Q3 + 1.5 * iqr_value
+
+# Filter out delays above the upper bound
+filtered_data <- cleaned_combined_data %>%
+  filter(`Min Delay` <= upper_bound)
+
+# Create the boxplot using filtered data
+ggplot(filtered_data, aes(x = Transit_mode, y = `Min Delay`, fill = Transit_mode)) +
+  geom_boxplot() +
+  labs(
+    title = "Boxplot of Delay Duration by Transit Mode (Filtered by IQR)",
+    x = "Transit Mode",
+    y = "Delay Duration (Minutes)"
+  ) +
+  theme_minimal()
+```
 
 ## Predictor variables
 
-Add graphs, tables and text.
+### Transit Mode
 
-Use sub-sub-headings for each outcome variable and feel free to combine a few into one if they go together naturally.
+The main predictor variable is Transit Mode, which includes three categories: subway, streetcar, and bus. Each transit mode has distinct characteristics, service areas, and operational challenges that may contribute to variations in delay duration.
+
+To examine this relationship, @fig-transit plots the average delay duration for each transit mode. This chart helps us visualize which transit mode experiences the longest delays on average and illustrates the extent to which each mode contributes to the overall delay picture.
+
+```{r}
+#| label: fig-transit
+#| fig-cap: "Average Delay Duration by Transit Mode"
+#| echo: false
+#| warning: false
+#Bar Chart of Average Delay Duration by Transit Mode.
+
+ggplot(cleaned_combined_data, aes(x = Transit_mode, fill = Transit_mode)) +
+  geom_bar() +
+  labs(
+    title = "Frequency of Observations by Transit Mode",
+    x = "Transit Mode",
+    y = "Count"
+  ) +
+  theme_minimal()
+```
+
+```{r}
+#| echo: false
+#| eval: true
+#| label: tbl-count
+#| warning: false
+# Count Table for Transit Modes
+transit_mode_count <- cleaned_combined_data %>%
+  group_by(Transit_mode) %>%
+  summarise(Count = n()) %>%
+  arrange(desc(Count))
+kable(transit_mode_count, caption = "Count of Observations by Transit Mode") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), full_width = F)
+```
 
 
+### Time of Day
+
+Another key predictor is Time of Day shown in @fig-time. This variable plays a crucial role in understanding how congestion and operational challenges fluctuate throughout the day. For example, delays might be more frequent and prolonged during peak hours (morning and evening rush periods) due to increased ridership.
+
+```{r}
+#| label: fig-time
+#| fig-cap: "Average Delay by Time of Day"
+#| echo: false
+#| warning: false
+# Line Graph for Average Delay by Time of Day
+average_delay_time <- cleaned_combined_data %>%
+  group_by(Time) %>%
+  summarise(Average_Delay = mean(`Min Delay`, na.rm = TRUE))
+
+ggplot(average_delay_time, aes(x = as.POSIXct(Time, format = "%H:%M"), y = Average_Delay)) +
+  geom_line(color = "blue") +
+  labs(
+    title = "Average Delay Duration by Time of Day",
+    x = "Time of Day",
+    y = "Average Delay Duration (Minutes)"
+  ) +
+  theme_minimal()
+```
 
 
+@fig-time shows a line plot representing average delay duration across different hours of the day. This visualization allows us to determine the times at which each transit mode is most vulnerable to delays, and whether certain transit modes are disproportionately affected during rush hours.
 
+### Day of the Week
 
+The Day of the Week is an important predictor that may influence delays due to varying passenger demand and maintenance schedules. Weekdays typically see different patterns compared to weekends, with increased rider demand and therefore greater potential for delays.
+
+@fig-day is a bar chart that shows the average delay duration for each day of the week, grouped by transit mode. It allows us to observe any weekly trends in delay duration, such as consistent weekday delays or weekend-specific issues, giving more insight into the operational aspects of the different modes. The predictor variables, including transit mode, time of day, and day of the week, help in assessing the specific conditions that affect the delay duration.
+
+```{r}
+#| label: fig-day
+#| fig-cap: "Delay Duration by Day of the Week"
+#| echo: false
+#| warning: false
+# Calculate IQR and Filter Outliers
+delay_iqr <- cleaned_combined_data %>%
+  group_by(Day) %>%
+  summarise(
+    Q1 = quantile(`Min Delay`, 0.25, na.rm = TRUE),
+    Q3 = quantile(`Min Delay`, 0.75, na.rm = TRUE),
+    IQR = Q3 - Q1
+  )
+
+# Join IQR data back to the main dataset
+analysis_data_filtered <- cleaned_combined_data %>%
+  left_join(delay_iqr, by = "Day") %>%
+  filter(
+    `Min Delay` >= (Q1 - 1.5 * IQR) & `Min Delay` <= (Q3 + 1.5 * IQR)
+  )
+
+# Boxplot of Delay Duration by Day of the Week without Outliers
+figure5_filtered_boxplot <- analysis_data_filtered %>%
+  ggplot(aes(x = Day, y = `Min Delay`, fill = Day)) +
+  geom_boxplot() +
+  labs(
+    title = "Distribution of Delay Duration by Day of the Week (Without Outliers)",
+    x = "Day of the Week",
+    y = "Delay Duration (minutes)"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none") +
+  scale_x_discrete(limits = c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"))
+
+# Print the boxplot without outliers
+print(figure5_filtered_boxplot)
+
+```
 
 
 # Model {#sec-model}
 
-The goal of our modelling strategy is twofold. Firstly,...
-
-Here we briefly describe the Bayesian analysis model used to investigate... Background details and diagnostics are included in [Appendix -@sec-model-details].
-
-## Model set-up
-
+The Bayesian linear regression model is designed to predict the duration of delays experienced by different TTC transit modes (subway, streetcar, or bus) based on various predictors such as transit mode, time of day, and day of the week. Background details and diagnostics are included in [Appendix -@sec-model-details].
 
 ## Model Set-Up
 
@@ -107,6 +278,7 @@ y_i | \mu_i, \sigma &\sim \mbox{Normal}(\mu_i, \sigma) \\
 \end{align}
 
 Here:
+
 \begin{itemize}
     \item $y_i$ is the observed delay duration for a specific transit event.
     \item $\alpha$ is the baseline average delay duration.
@@ -120,38 +292,22 @@ This Bayesian model allows for estimating the contributions of transit mode, tim
 
 We run the model in R [@citeR] using the `rstanarm` package of @rstanarm. We use the default priors from `rstanarm`.
 
-
 ### Model justification
 
 We expect a positive relationship between the size of the wings and time spent aloft. In particular...
 
 We can use maths by including latex between dollar signs, for instance $\theta$.
 
-
 # Results
 
 Our results are summarized in @tbl-modelresults.
-
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
-
-library(rstanarm)
-
-first_model <-
-  readRDS(file = here::here("models/first_model.rds"))
-```
-
-
 
 
 # Discussion {#sec-discuss}
 
 ## First discussion point {#sec-first-point}
 
-If my paper were 10 pages, then should be be at least 2.5 pages. The discussion is a chance to show off what you know and what you learnt from all this. 
+If my paper were 10 pages, then should be be at least 2.5 pages. The discussion is a chance to show off what you know and what you learnt from all this.
 
 ## Second discussion point
 
@@ -169,19 +325,12 @@ Weaknesses and next steps should also be included.
 
 # Appendix {#sec-appendix}
 
-
 # Additional data details
 
 # Model details {#sec-model-details}
 
 ## Posterior predictive check
 
-
-
-
 \newpage
 
-
 # References
-
-
