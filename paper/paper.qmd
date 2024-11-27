@@ -44,17 +44,13 @@ Results paragraph
 
 Why it matters paragraph
 
-Telegraphing paragraph: The remainder of this paper is structured as follows. @sec-data....
-
-The remainder of this paper is structured as follows. @sec-data discusses the data used for this analysis, including key variables and sources, with particular attention to the quality metrics that affect polling accuracy. @sec-models outlines our modeling approach..., incorporating lessons learned from recent electoral cycles. Our predictions are under section of each model. @sec-discuss discusses the implications of our findings and suggests directions for future research. Finally, @sec-appendix evaluates methodology and survey copy.
+The remainder of this paper is structured as follows. @sec-data discusses the data used for this analysis, including key variables and sources, with particular attention to the quality metrics that affect polling accuracy. @sec-model outlines our modeling approach..., incorporating lessons learned from recent electoral cycles. Our predictions are under section of each model. @sec-discuss discusses the implications of our findings and suggests directions for future research. Finally, @sec-appendix evaluates methodology and survey copy.
 
 
 
 # Data {#sec-data}
 
 ## Overview
-
-Following @tellingstories, we consider...
 
 In this project, we used data from the opendatatoronto dataset created by [@opendatatoronto]. This dataset provided bus, subway, streetcar records essential for our analysis. In this project, we used R[@citeR] and several R packages for data processing, analysis, and visualization. Specifically, tidyverse [@tidyverse], arrow[@arrow], here[@here], ggplot2[@ggplot2], while dplyr[@dplyr] was key for data manipulation tasks. For dynamic report generation, knitr[@knitr] used, providing enhanced formatting for outputs. Together, these packages enabled efficient data cleaning, analysis, and visualization throughout the study.
 
@@ -87,7 +83,7 @@ Use sub-sub-headings for each outcome variable and feel free to combine a few in
 
 
 
-# Model
+# Model {#sec-model}
 
 The goal of our modelling strategy is twofold. Firstly,...
 
@@ -96,16 +92,31 @@ Here we briefly describe the Bayesian analysis model used to investigate... Back
 ## Model set-up
 
 
-Define $y_i$ as the duration of delay (in seconds) for a given transit event. Let $\beta_i$ represent the transit mode, encoded as an indicator variable for subway, streetcar, or bus, and $\gamma_i$ represent the time of day, categorized into morning peak, midday, evening peak, and late night.
+## Model Set-Up
+
+Define $y_i$ as the duration of the delay (in minutes) for a given transit event. Let $\beta_i$ represent the transit mode (subway, streetcar, or bus), and $\gamma_i$ and $\delta_i$ represent the time and day of the week, respectively. The generative model is specified as follows:
 
 \begin{align} 
-y_i|\mu_i, \sigma &\sim \mbox{Normal}(\mu_i, \sigma) \\
-\mu_i &= \alpha + \beta_i + \gamma_i\\
+y_i | \mu_i, \sigma &\sim \mbox{Normal}(\mu_i, \sigma) \\
+\mu_i &= \alpha + \beta_i + \gamma_i + \delta_i \\
 \alpha &\sim \mbox{Normal}(0, 2.5) \\
 \beta &\sim \mbox{Normal}(0, 2.5) \\
 \gamma &\sim \mbox{Normal}(0, 2.5) \\
+\delta &\sim \mbox{Normal}(0, 2.5) \\
 \sigma &\sim \mbox{Exponential}(1)
 \end{align}
+
+Here:
+\begin{itemize}
+    \item $y_i$ is the observed delay duration for a specific transit event.
+    \item $\alpha$ is the baseline average delay duration.
+    \item $\beta_i$ captures the effect of transit mode (subway, streetcar, or bus).
+    \item $\gamma_i$ captures the effect of the time of day (e.g., peak or off-peak).
+    \item $\delta_i$ captures the effect of the day of the week.
+    \item $\sigma$ is the standard deviation, representing unexplained variability in $y_i$.
+\end{itemize}
+
+This Bayesian model allows for estimating the contributions of transit mode, time, and day to delay durations while accounting for uncertainty in the data.
 
 We run the model in R [@citeR] using the `rstanarm` package of @rstanarm. We use the default priors from `rstanarm`.
 
@@ -136,7 +147,7 @@ first_model <-
 
 
 
-# Discussion
+# Discussion {#sec-discuss}
 
 ## First discussion point {#sec-first-point}
 
@@ -156,7 +167,7 @@ Weaknesses and next steps should also be included.
 
 \appendix
 
-# Appendix {-}
+# Appendix {#sec-appendix}
 
 
 # Additional data details
