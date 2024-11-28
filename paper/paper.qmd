@@ -6,7 +6,7 @@ author:
 thanks: "Code and data are available at: [https://github.com/ClaireUoft/Toronto_TTC_Transportation)."
 date: today
 date-format: long
-abstract: "This paper uses a Bayesian Linear Regression Model to examine which Toronto Transit Commission (TTC) transit mode—subway, streetcar, or bus—experiences the highest frequency and duration of delays. We found that [summarize main finding here—e.g., buses experience significantly longer delays compared to subways and streetcars]. This finding is important because it highlights critical areas where transit improvements could alleviate the impact of delays on daily commuters. Overall, our study provides valuable insights into TTC transit reliability, informing efforts to enhance urban transportation efficiency and passenger experience."
+abstract: "This paper uses a Bayesian Linear Regression Model to examine which Toronto Transit Commission (TTC) transit mode—subway, streetcar, or bus—experiences the highest duration of delays. We found that buses experience significantly longer delays compared to subways and streetcars. This finding is important because it highlights critical areas where transit improvements could alleviate the impact of delays on daily commuters. Overall, our study provides valuable insights into TTC transit reliability, informing efforts to enhance urban transportation efficiency and passenger experience."
 format: 
   pdf:
     toc: true
@@ -28,7 +28,10 @@ library(here)
 library(ggplot2)
 library(dplyr)
 library(knitr)
+
 library(kableExtra)
+library(modelsummary)
+library(lubridate)
 
 # Load cleaned datasets
 cleaned_combined_data <-read_parquet(here::here("data/02-analysis_data/cleaned_combined_data.parquet"))
@@ -82,6 +85,8 @@ filtered_data |>
   column_spec(1, width = "2.5cm")
 
 ```
+
+## Data Cleaning
 
 ## Outcome variables
 
@@ -171,21 +176,6 @@ ggplot(cleaned_combined_data, aes(x = Transit_mode, fill = Transit_mode)) +
   theme_minimal()
 ```
 
-```{r}
-#| echo: false
-#| eval: true
-#| label: tbl-count
-#| warning: false
-# Count Table for Transit Modes
-transit_mode_count <- cleaned_combined_data %>%
-  group_by(Transit_mode) %>%
-  summarise(Count = n()) %>%
-  arrange(desc(Count))
-kable(transit_mode_count, caption = "Count of Observations by Transit Mode") %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), full_width = F)
-```
-
-
 ### Time of Day
 
 Another key predictor is Time of Day shown in @fig-time. This variable plays a crucial role in understanding how congestion and operational challenges fluctuate throughout the day. For example, delays might be more frequent and prolonged during peak hours (morning and evening rush periods) due to increased ridership.
@@ -210,20 +200,16 @@ ggplot(average_delay_time, aes(x = as.POSIXct(Time, format = "%H:%M"), y = Avera
   theme_minimal()
 ```
 
-
 @fig-time shows a line plot representing average delay duration across different hours of the day. This visualization allows us to determine the times at which each transit mode is most vulnerable to delays, and whether certain transit modes are disproportionately affected during rush hours.
 
 ### Day of the Week
-
-The Day of the Week is an important predictor that may influence delays due to varying passenger demand and maintenance schedules. Weekdays typically see different patterns compared to weekends, with increased rider demand and therefore greater potential for delays.
-
-@fig-day is a bar chart that shows the average delay duration for each day of the week, grouped by transit mode. It allows us to observe any weekly trends in delay duration, such as consistent weekday delays or weekend-specific issues, giving more insight into the operational aspects of the different modes. The predictor variables, including transit mode, time of day, and day of the week, help in assessing the specific conditions that affect the delay duration.
 
 ```{r}
 #| label: fig-day
 #| fig-cap: "Delay Duration by Day of the Week"
 #| echo: false
 #| warning: false
+
 # Calculate IQR and Filter Outliers
 delay_iqr <- cleaned_combined_data %>%
   group_by(Day) %>%
@@ -258,6 +244,11 @@ print(figure5_filtered_boxplot)
 
 ```
 
+The Day of the Week is an important predictor that may influence delays due to varying passenger demand and maintenance schedules. Weekdays typically see different patterns compared to weekends, with increased rider demand and therefore greater potential for delays.
+
+@fig-day is a bar chart that shows the average delay duration for each day of the week, grouped by transit mode. It allows us to observe any weekly trends in delay duration, such as consistent weekday delays or weekend-specific issues, giving more insight into the operational aspects of the different modes. The predictor variables, including transit mode, time of day, and day of the week, help in assessing the specific conditions that affect the delay duration.
+
+\\newpage
 
 # Model {#sec-model}
 
@@ -288,26 +279,114 @@ Here:
     \item $\sigma$ is the standard deviation, representing unexplained variability in $y_i$.
 \end{itemize}
 
-This Bayesian model allows for estimating the contributions of transit mode, time, and day to delay durations while accounting for uncertainty in the data.
+This Bayesian model allows for estimating the contributions of transit mode, time, and day to delay duration while accounting for uncertainty in the data.
 
 We run the model in R [@citeR] using the `rstanarm` package of @rstanarm. We use the default priors from `rstanarm`.
 
-### Model justification
+## Model justification
 
 We expect a positive relationship between the size of the wings and time spent aloft. In particular...
 
 We can use maths by including latex between dollar signs, for instance $\theta$.
 
+## Assumptions and Limitations
+
 # Results
 
-Our results are summarized in @tbl-modelresults.
+These statistics indicate that, on average, TTC streetcars experienced a delay duration of approximately 15.7 minutes, while buses faced an average delay of 12.5 minutes, and subways experienced the shortest average delay of 9.3 minutes. The total number of delay events recorded was 50,039 for buses, 21,979 for subways, and 12,107 for streetcars.
 
+```{r}
+#| echo: false
+#| eval: true
+#| label: tbl-summary-stats
+#| warning: false
+# Summary Statistics for Delay Events by Transit Mode
+
+# Calculate the average delay duration and count for each transit mode
+transit_mode_summary <- cleaned_combined_data %>%
+  group_by(Transit_mode) %>%
+  summarise(
+    `Average Delay Duration (Minutes)` = mean(`Min Delay`, na.rm = TRUE),
+    `Count of Events` = n()
+  ) %>%
+  arrange(desc(`Count of Events`))
+
+# Create the summary statistics table
+kable(transit_mode_summary, caption = "Summary statistics of delay events for TTC transit modes") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), full_width = F)
+
+```
+
+The bar plot visually confirms that streetcars have consistently higher average delay durations compared to buses and subways, aligning with the numerical analysis."
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+cleaned_combined_data %>%
+  group_by(Transit_mode) %>%
+  summarise(Average_Delay = mean(`Min Delay`, na.rm = TRUE)) %>%
+  ggplot(aes(x = Transit_mode, y = Average_Delay, fill = Transit_mode)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Average Delay Duration by Transit Mode", y = "Average Delay (Minutes)", x = "Transit Mode") +
+  theme_minimal()
+
+```
+
+The model summary @tbl-modelresults results indicate that, compared to buses, streetcars and subways have shorter delays, with average reductions of 6.8 and 18.8 minutes, respectively. Delays also vary by day of the week, with Tuesday and Wednesday showing slightly shorter delays. However, the model explains only about 3% of the variance in delay duration (R² = 0.033), and the RMSE of 44.88 suggests moderate prediction error. While transit mode and day of the week have some influence, much of the variation in delay duration remains unexplained.
+
+```{r}
+#| echo: false
+#| eval: true
+#| label: tbl-modelresults
+#| tbl-cap: "Summary of model results evaluating the relationship between transit mode and delay duration"
+#| warning: false
+
+modelsummary::modelsummary(
+  list(
+    "model1" = model1
+  )
+)
+```
+
+The @fig-predict_delay graph indicates that bus face the highest average delay durations, peaking at over 40 minutes in the early morning. Streecar have moderate delays throughout the day, averaging between 15-20 minutes, while subways consistently experience the lowest delays, averaging below 10 minutes. The significant early morning peak for streetcars suggests this as a critical period for intervention to reduce delays.
+
+```{r}
+#| label: fig-predict_delay
+#| fig-cap: Predicting average delay duration by time of day for each transit mode
+#| echo: false
+#| eval: true
+#| warning: false
+#| message: false
+
+# Predicting average delay duration by time of day for each transit mode
+# Create a `Time_of_Day` column by extracting the hour from `Time`
+cleaned_combined_data <- cleaned_combined_data %>%
+  mutate(Time_of_Day = hour(hms(Time)))
+
+# Calculate average delay duration by time of day for each transit mode
+avg_delay_time_of_day <- cleaned_combined_data %>%
+  group_by(Time_of_Day, Transit_mode) %>%
+  summarise(Average_Delay = mean(`Min Delay`, na.rm = TRUE)) %>%
+  ungroup()
+
+# Plotting average delay by time of day for each transit mode
+ggplot(avg_delay_time_of_day, aes(x = Time_of_Day, y = Average_Delay, color = Transit_mode)) +
+  geom_line(size = 1.2) +
+  labs(title = "Predicted Average Delay Duration by Time of Day for Each Transit Mode",
+       x = "Time of Day (Hourly)",
+       y = "Average Delay Duration (Minutes)",
+       color = "Transit Mode") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
 
 # Discussion {#sec-discuss}
 
-## First discussion point {#sec-first-point}
+Some questions that a good discussion would cover include (each of these would be a sub-section of something like half a page to a page): What is done in this paper? What is something that we learn about the world? What is another thing that we learn about the world? What are some weaknesses of what was done? What is left to learn or how should we proceed in the future?
 
-If my paper were 10 pages, then should be be at least 2.5 pages. The discussion is a chance to show off what you know and what you learnt from all this.
+## First discussion point {#sec-first-point}
 
 ## Second discussion point
 
@@ -315,9 +394,7 @@ Please don't use these as sub-heading labels - change them to be what your point
 
 ## Third discussion point
 
-## Weaknesses and next steps
-
-Weaknesses and next steps should also be included.
+## Limitations and next steps
 
 \newpage
 
@@ -325,11 +402,34 @@ Weaknesses and next steps should also be included.
 
 # Appendix {#sec-appendix}
 
+Surveys, sampling, and observational data appendix Please include an appendix where you focus on some aspect of surveys, sampling or observational data, related to your paper. This should be an in-depth exploration, akin to the "idealized methodology/survey/pollster methodology" sections of Paper 2. Some aspect of this is likely covered in the Measurement sub-section of your Data section, but this would be much more detailed, and might include aspects like simulation and linkages to the literature, among other aspects.
+
 # Additional data details
 
 # Model details {#sec-model-details}
 
 ## Posterior predictive check
+
+## Diagnostics
+
+@fig-stanareyouokay-1 is a trace Plot that shows the sampled values of each parameter from the MCMC chains over the iterations. Ideally, these chains should overlap well and display consistent movement across the same regions. From the trace plot, the chains for all parameters appear to have converged and are overlapping consistently, without any clear trends or divergences. This indicates good mixing and suggests the MCMC algorithm has likely converged.
+
+@fig-stanareyouokay-2 is a Rhat Plot that shows the potential scale reduction factor, which assesses convergence of the MCMC chains. The Rhat statistic should be close to 1, typically below 1.1, to indicate good convergence. In this plot, the Rhat values for all parameters are very close to 1, suggesting the MCMC algorithm has converged, and there is no significant difference between the variances within and across chains.
+
+```{r}
+#| echo: false
+#| eval: true
+#| message: false
+#| warning: false
+#| label: fig-stanareyouokay
+#| fig-cap: "Checking the convergence of the MCMC algorithm"
+#| fig-subcap: ["Trace plot", "Rhat plot"]
+#| layout-ncol: 2
+
+plot(model1, "trace")
+
+plot(model1, "rhat")
+```
 
 \newpage
 
