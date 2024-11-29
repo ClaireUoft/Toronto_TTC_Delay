@@ -19,23 +19,25 @@ analysis_data <- read_parquet(here::here("data/02-analysis_data/cleaned_combined
 #### Prepare Data for Delay Duration Analysis ####
 # Ensure Min Delay is numeric
 analysis_data <- analysis_data %>%
-  mutate(Min_Delay = as.numeric(`Min Delay`))
+  mutate(`Min Delay` = as.numeric(`Min Delay`))
 
 # Filter out any NA values in Min Delay to avoid errors in modeling
 analysis_data <- analysis_data %>%
-  filter(!is.na(Min_Delay))
+  filter(!is.na(`Min Delay`))
 
 #### Model Delay Duration ####
 # Fit a linear regression model for delay duration using transit mode, time, and day
-first_model <- 
-  stan_glm(
-    formula = Min_Delay ~ Transit_mode + Time + Day,
-    data = analysis_data,
-    family = gaussian(),
-    prior = normal(location = 0, scale = 2.5, autoscale = TRUE),
-    prior_intercept = normal(location = 0, scale = 2.5, autoscale = TRUE),
-    seed = 853
-  )
+set.seed(304)
+analysis_data_sample <- analysis_data %>% sample_frac(0.1)
+
+first_model <- stan_glm(
+  formula = `Min Delay` ~ Transit_mode + Time + Day,
+  data = analysis_data_sample,
+  family = gaussian(),
+  prior = normal(location = 0, scale = 2.5, autoscale = TRUE),
+  prior_intercept = normal(location = 0, scale = 2.5, autoscale = TRUE),
+  seed = 304
+)
 
 #### Save model ####
 saveRDS(
