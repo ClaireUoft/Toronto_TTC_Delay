@@ -32,6 +32,8 @@ library(knitr)
 library(kableExtra)
 library(modelsummary)
 library(lubridate)
+library(bayesplot)
+library(rstanarm)
 
 # Load cleaned datasets
 cleaned_combined_data <-read_parquet(here::here("data/02-analysis_data/cleaned_combined_data.parquet"))
@@ -42,13 +44,13 @@ model1 <- readRDS(here::here("models/first_model.rds"))
 
 # Introduction
 
-Overview paragraph
+Urban transit systems play a crucial role in the daily lives of millions, influencing mobility, accessibility, and economic productivity in cities worldwide. However, transit delays can significantly impact passengers’ schedules, urban congestion, and overall satisfaction with public transportation. In Toronto, the Toronto Transit Commission (TTC) operates a complex network of buses, streetcars, and subways, all of which are prone to delays caused by a variety of factors, including mechanical failures, traffic congestion, and operational disruptions. Despite the centrality of public transit to urban life, there is limited systematic analysis of how delay patterns vary across transit modes and the factors contributing to these delays.
 
-Estimand paragraph
+This paper focuses on addressing this gap by analyzing the duration of delays across TTC transit modes—buses, streetcars, and subways—using a comprehensive dataset from Open Data Toronto. Specifically, it examines the effects of transit mode, time of day, and day of the week on delay duration. While previous studies primarily focused on historical data and specific transit types. Their work examined delays across the TTC system over eight years but lacked the inclusion of all three transit modes (subway, streetcar, and bus) in a single comprehensive study for the most recent years. 
 
-Results paragraph
+To fill this gap, we employed a Bayesian linear regression model to estimate the relationship between delay duration and its predictors. The analysis incorporates over 80,000 delay events, harmonized across transit modes and cleaned for consistency. The results reveal that buses experience the longest average delays, followed by streetcars and subways. Additionally, delays are longer during peak hours and vary by day of the week, with weekends exhibiting shorter delays on average.
 
-Why it matters paragraph
+These findings are significant for urban planners, transit operators, and policymakers, as they highlight critical areas for intervention to improve transit reliability. Additionally, daily TTC users can leverage these insights to make informed decisions about when to leave their homes and which mode of transportation to take. Moreover, addressing these delays could enhance passenger satisfaction, reduce economic losses caused by tardiness, and increase the overall efficiency and reliability of Toronto’s transit network. This study contributes to the broader field of urban transit research by offering detailed insights into delay variability and providing a data-driven foundation for targeted improvements in public transportation systems.
 
 The remainder of this paper is structured as follows. @sec-data discusses the data used for this analysis, including key variables and sources, with particular attention to the quality metrics that affect polling accuracy. @sec-model outlines our modeling approach..., incorporating lessons learned from recent electoral cycles. Our predictions are under section of each model. @sec-discuss discusses the implications of our findings and suggests directions for future research. Finally, @sec-appendix evaluates methodology and survey copy.
 
@@ -58,9 +60,9 @@ The remainder of this paper is structured as follows. @sec-data discusses the da
 
 In this project, we used data from the opendatatoronto dataset created by [@opendatatoronto]. This dataset provided bus, subway, streetcar records essential for our analysis. In this project, we used R[@citeR] and several R packages for data processing, analysis, and visualization. Specifically, tidyverse [@tidyverse], arrow[@arrow], here[@here], ggplot2[@ggplot2], while dplyr[@dplyr] was key for data manipulation tasks. For dynamic report generation, knitr[@knitr] and kableExtra [@kableExtra] used, providing enhanced formatting for outputs. Together, these packages enabled efficient data cleaning, analysis, and visualization throughout the study.
 
-## Measurement
+\newpage
 
-Some paragraphs about how we go from a phenomena in the world to an entry in the dataset.
+## Measurement
 
 ```{r}
 #| label: tbl-cleaned-data-preview
@@ -86,7 +88,62 @@ filtered_data |>
 
 ```
 
+The measurement process refers to how real-world transit delays—such as a bus stuck in traffic, a subway experiencing a mechanical failure, or a streetcar held by emergency services—are captured and represented as entries in a dataset. Each entry corresponds to a distinct delay event recorded by the Toronto Transit Commission (TTC).
+
+**Delay Duration (`Min Delay`)**:  
+This variable represents the length of a transit delay, measured in minutes. It is derived from the difference between scheduled and actual event resolution times, as recorded by the TTC’s operational systems. These durations are logged for each incident and standardized in the dataset as numerical values.
+
+**Transit Mode (`Transit_mode`)**:  
+This categorical variable identifies the mode of transit where the delay occurred: subway, streetcar, or bus. The transit mode is directly logged as part of the operational data.
+
+**Time (`Time`)**:  
+The timestamp of the delay event, recorded in the dataset in the format `HH:MM:SS`, specifies when the delay occurred. This variable is used to analyze temporal patterns in delays, such as peak hours.
+
+**Day (`Day`)**:  
+The day of the week when the delay occurred (e.g., Monday, Tuesday). This variable is derived from the event date and provides insights into potential weekly trends in delays.
+
+**Line (`Line`)**:  
+This variable represents the transit line or route affected by the delay (e.g., Line 1 for subway or specific route numbers for buses and streetcars). It is directly recorded in the TTC’s data logs.
+
+**Location (`Location`)**:  
+The specific location or station where the delay occurred is captured in this variable, allowing for spatial analysis of delay patterns.
+
+**Incident (`Incident`)**:  
+This categorical variable captures the cause of the delay, such as "Mechanical," "Security," or "Collision." Raw incident descriptions are grouped into broader categories to ensure consistency across all transit modes.
+
+
 ## Data Cleaning
+
+The transit delay data was prepared for analysis by processing raw datasets for buses, streetcars, and subways. Key steps included:
+
+1. **Adding a Transit Mode Column**:  
+   A `Transit_mode` column was added to differentiate between buses, streetcars, and subways.
+
+2. **Removing Unnecessary Columns**:  
+   Irrelevant columns were dropped, retaining only essential variables like `Date`, `Time`, `Day`, `Transit_mode`, `Line`, `Location`, `Incident`, and `Min Delay`.
+
+3. **Standardizing Subway Line Identifiers**:  
+   Subway lines were recoded into consistent and meaningful labels (e.g., `"YU"` to `"1"`).
+
+4. **Harmonizing Column Names and Categories**:  
+   Column names were standardized across datasets, and incidents were grouped under broader categories (e.g., `"Collision - TTC Involved"` and `"Collision - TTC"` were both labeled `"Collision"`).
+
+5. **Handling Missing and Mismatched Values**:  
+   Invalid or missing data (e.g., incidents labeled `"999"`) were reassigned as `"N/A"`.
+
+6. **Combining Datasets**:  
+   All three datasets were merged into a unified dataset with consistent structure and formatting.
+
+**Subsampling the Dataset**:  
+To address computational challenges with the original dataset of over 80,000 observations, a random subsample of 0.1% was selected. This ensured the subset remained representative of delay events across transit modes while enabling efficient model fitting without compromising analytical integrity.
+
+**Histogram of Delays**:  
+@fig-histogram-delays Delays were capped at 45 minutes to focus on typical delay durations and exclude extreme values that could distort the distribution.
+
+**Boxplot of Delays**:  
+@fig-boxplot-delays The interquartile range (IQR) method was used to remove extreme outliers. The upper bound was calculated as `1.5 * IQR` above the third quartile, ensuring accurate representation of central tendencies and variability in delay durations.
+
+
 
 ## Outcome variables
 
@@ -248,7 +305,7 @@ The Day of the Week is an important predictor that may influence delays due to v
 
 @fig-day is a bar chart that shows the average delay duration for each day of the week, grouped by transit mode. It allows us to observe any weekly trends in delay duration, such as consistent weekday delays or weekend-specific issues, giving more insight into the operational aspects of the different modes. The predictor variables, including transit mode, time of day, and day of the week, help in assessing the specific conditions that affect the delay duration.
 
-\\newpage
+\newpage
 
 # Model {#sec-model}
 
@@ -285,11 +342,19 @@ We run the model in R [@citeR] using the `rstanarm` package of @rstanarm. We use
 
 ## Model justification
 
-We expect a positive relationship between the size of the wings and time spent aloft. In particular...
+The specified Bayesian generative model is designed to estimate how transit mode, time of day, and day of the week contribute to delay duration. The choice of a Bayesian framework allows for explicit modeling of uncertainty in the data and provides posterior distributions for all parameters of interest, offering more nuanced insights than simple point estimates.
 
-We can use maths by including latex between dollar signs, for instance $\theta$.
+We expect that the transit mode ($\beta_i$) will have a significant impact on the delay duration ($y_i$), as different modes (subway, streetcar, and bus) are subject to varying operational challenges and infrastructure constraints. For instance, subways might experience shorter average delays due to dedicated tracks, while buses could encounter higher delays due to traffic congestion.
+
+The time of day ($\gamma_i$) is hypothesized to influence delays, with peak hours (e.g., rush hour) likely contributing to longer delays due to higher demand and operational stress. Similarly, the day of the week ($\delta_i$) may play a role, as weekends often have reduced schedules and lower demand, potentially resulting in shorter delays.
+
+The prior distributions for the parameters are chosen to be weakly informative, specifically $\mbox{Normal}(0, 2.5)$ for $\alpha$, $\beta$, $\gamma$, and $\delta$, reflecting prior beliefs that the effects are likely centered around zero but allowing for moderate deviations. The standard deviation ($\sigma$) is modeled with an $\mbox{Exponential}(1)$ prior, which is appropriate for ensuring positive values while discouraging overly large variances in unexplained delay durations.
 
 ## Assumptions and Limitations
+
+The analysis assumes a linear relationship between delay duration and predictors (transit mode, time of day, and day of the week), with delays following a normal distribution. Independence between delay events is assumed, though real-world factors like cascading delays might violate this. While the IQR method removes extreme outliers, it may exclude rare but valid events, and the model explains only a small fraction of the variation (R² = 0.033), leaving many influencing factors unaccounted for. Simplistic representations of time and day fail to capture interactions or seasonal trends, and external influences like weather or events are not considered. Additionally, data inconsistencies, such as missing values and aggregated incident types, may impact accuracy, limiting the model’s ability to fully explain delay dynamics.
+
+\newpage
 
 # Results
 
@@ -383,18 +448,26 @@ ggplot(avg_delay_time_of_day, aes(x = Time_of_Day, y = Average_Delay, color = Tr
 ```
 
 # Discussion {#sec-discuss}
+## Understanding Transit Delays Across Modes
 
-Some questions that a good discussion would cover include (each of these would be a sub-section of something like half a page to a page): What is done in this paper? What is something that we learn about the world? What is another thing that we learn about the world? What are some weaknesses of what was done? What is left to learn or how should we proceed in the future?
+This study aimed to analyze delay durations across Toronto Transit Commission (TTC) transit modes—subway, streetcar, and bus—using data from 2024. The findings reveal critical differences in delay patterns, with buses experiencing the longest delays on average, followed by streetcars and subways. These results align with expectations given the shared-road infrastructure of buses and streetcars, which are more exposed to traffic congestion and external disruptions. Subways, operating on dedicated tracks, exhibit fewer and shorter delays, highlighting the reliability of grade-separated transit systems.
 
-## First discussion point {#sec-first-point}
+## Temporal and Weekly Patterns in Delays
 
-## Second discussion point
+The analysis also identified temporal trends, with peak hours contributing to longer delays across all modes. This reflects the increased strain on transit networks during rush hours, driven by higher ridership and demand. Additionally, delays were shorter on weekends, likely due to reduced traffic congestion and lower service frequency. These findings underscore the importance of tailoring operational strategies to address the unique challenges of peak periods.
 
-Please don't use these as sub-heading labels - change them to be what your point actually is.
+## Computational Constraints and Data Subsampling
 
-## Third discussion point
+While the original dataset contained over 80,000 observations, computational challenges necessitated subsampling to 0.1% of the data. This approach ensured the analysis remained feasible without compromising the representativeness of the sample. However, this step may have excluded rare but significant delay events, potentially influencing the findings.
+
+## Implications for Policy and Practice
+
+These findings have practical implications for transit planning and policy. Prioritizing interventions for buses and streetcars, such as dedicated lanes or signal prioritization, could reduce delays significantly. Understanding temporal patterns can guide resource allocation, with more staff and services deployed during peak hours. For daily TTC users, insights into delay variability can aid in better trip planning and mode selection.
 
 ## Limitations and next steps
+
+The model accounted for only 3% of the variation in delay durations (R² = 0.033), suggesting the need to include additional factors, such as weather, traffic incidents, and ridership levels, in future analyses. Temporal variables were modeled independently, without exploring interactions or seasonal effects, which could further refine the results. Missing or inconsistent entries (e.g., incidents labeled as "N/A") may have introduced biases, while the IQR method for outlier removal may have excluded rare but valid delay events. Addtionally, future research should expand on these findings by incorporating additional predictors, such as weather and traffic data, to enhance model accuracy.
+Analyzing interactions between variables, such as the combined effects of time of day and transit mode. Lastly, exploring the impact of infrastructure improvements, such as bus rapid transit (BRT) or streetcar signal prioritization, on delay reduction.
 
 \newpage
 
@@ -408,7 +481,7 @@ Surveys, sampling, and observational data appendix Please include an appendix wh
 
 # Model details {#sec-model-details}
 
-## Posterior predictive check
+
 
 ## Diagnostics
 
