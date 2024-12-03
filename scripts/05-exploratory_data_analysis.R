@@ -12,9 +12,10 @@
 library(tidyverse)
 library(ggplot2)
 library(rstanarm)
+library(arrow)
 
 #### Read data ####
-analysis_data <- read_parquet("/Users/claire/Downloads/Toronto_Transportation-main 2/data/02-analysis_data/cleaned_combined_data.parquet")
+analysis_data <- read_parquet(here::here("data/02-analysis_data/cleaned_combined_data.parquet"))
 
 # Bar Plot of Delay Frequency by Transit Mode 
 ggplot(analysis_data, aes(x = Transit_mode, fill = Incident)) +
@@ -32,12 +33,12 @@ ggplot(analysis_data, aes(x = Day, fill = Transit_mode)) +
   labs(title = "Delays by Day of the Week and Transit Mode", x = "Day of the Week", y = "Number of Delays", fill = "Transit Mode")
 
 #Boxplot of Delay Duration by Transit Mode
-ggplot(analysis_data, aes(x = Transit_mode, y = Min Delay)) +
+ggplot(analysis_data, aes(x = Transit_mode, y = `Min Delay`)) +
   geom_boxplot(fill = "lightblue") +
   labs(title = "Delay Duration by Transit Mode", x = "Transit Mode", y = "Delay Duration (mins)")
 
 #Heatmap of Delays by Time of Day and Transit Mode
-ggplot(analysis_data, aes(x = Time, y = Transit_mode, fill = Min Delay)) +
+ggplot(analysis_data, aes(x = Time, y = Transit_mode, fill = `Min Delay`)) +
   geom_tile() +
   labs(title = "Heatmap of Delay Duration by Time of Day and Transit Mode", x = "Time of Day", y = "Transit Mode", fill = "Delay Duration (mins)")
 
