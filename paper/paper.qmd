@@ -28,12 +28,11 @@ library(here)
 library(ggplot2)
 library(dplyr)
 library(knitr)
-
 library(kableExtra)
 library(modelsummary)
 library(lubridate)
-library(bayesplot)
 library(rstanarm)
+library(bayesplot)
 
 # Load cleaned datasets
 cleaned_combined_data <-read_parquet(here::here("data/02-analysis_data/cleaned_combined_data.parquet"))
@@ -46,7 +45,7 @@ model1 <- readRDS(here::here("models/first_model.rds"))
 
 Urban transit systems play a crucial role in the daily lives of millions, influencing mobility, accessibility, and economic productivity in cities worldwide. However, transit delays can significantly impact passengers’ schedules, urban congestion, and overall satisfaction with public transportation. In Toronto, the Toronto Transit Commission (TTC) operates a complex network of buses, streetcars, and subways, all of which are prone to delays caused by a variety of factors, including mechanical failures, traffic congestion, and operational disruptions. Despite the centrality of public transit to urban life, there is limited systematic analysis of how delay patterns vary across transit modes and the factors contributing to these delays.
 
-This paper focuses on addressing this gap by analyzing the duration of delays across TTC transit modes—buses, streetcars, and subways—using a comprehensive dataset from Open Data Toronto. Specifically, it examines the effects of transit mode, time of day, and day of the week on delay duration. While previous studies primarily focused on historical data and specific transit types. Their work examined delays across the TTC system over eight years but lacked the inclusion of all three transit modes (subway, streetcar, and bus) in a single comprehensive study for the most recent years. 
+This paper focuses on addressing this gap by analyzing the duration of delays across TTC transit modes—buses, streetcars, and subways—using a comprehensive dataset from Open Data Toronto. Specifically, it examines the effects of transit mode, time of day, and day of the week on delay duration. While previous studies primarily focused on historical data and specific transit types. Their work examined delays across the TTC system over eight years but lacked the inclusion of all three transit modes (subway, streetcar, and bus) in a single comprehensive study for the most recent years.
 
 To fill this gap, we employed a Bayesian linear regression model to estimate the relationship between delay duration and its predictors. The analysis incorporates over 80,000 delay events, harmonized across transit modes and cleaned for consistency. The results reveal that buses experience the longest average delays, followed by streetcars and subways. Additionally, delays are longer during peak hours and vary by day of the week, with weekends exhibiting shorter delays on average.
 
@@ -58,7 +57,7 @@ The remainder of this paper is structured as follows. @sec-data discusses the da
 
 ## Overview
 
-In this project, we used data from the opendatatoronto dataset created by [@opendatatoronto]. This dataset provided bus, subway, streetcar records essential for our analysis. In this project, we used R[@citeR] and several R packages for data processing, analysis, and visualization. Specifically, tidyverse [@tidyverse], arrow[@arrow], here[@here], ggplot2[@ggplot2], while dplyr[@dplyr] was key for data manipulation tasks. For dynamic report generation, knitr[@knitr] and kableExtra [@kableExtra] used, providing enhanced formatting for outputs. Together, these packages enabled efficient data cleaning, analysis, and visualization throughout the study.
+In this project, we used data from the opendatatoronto dataset created by [@opendatatoronto], alongside R [@citeR] and several key packages for analysis and visualization. tidyverse [@tidyverse] and dplyr [@dplyr] supported data manipulation, while arrow [@arrow] handled large datasets efficiently. lubridate [@lubridate] managed date-time data, and ggplot2 [@ggplot2] created visualizations. knitr [@knitr] and kableExtra [@kableExtra] enhanced report formatting. Bayesian regression was conducted using rstanarm [@rstanarm], with bayesplot [@bayesplot] for diagnostics, and modelsummary [@modelsummary] generated summary tables. Together, these tools ensured efficient data processing, analysis, and presentation.
 
 \newpage
 
@@ -90,60 +89,57 @@ filtered_data |>
 
 The measurement process refers to how real-world transit delays—such as a bus stuck in traffic, a subway experiencing a mechanical failure, or a streetcar held by emergency services—are captured and represented as entries in a dataset. Each entry corresponds to a distinct delay event recorded by the Toronto Transit Commission (TTC).
 
-**Delay Duration (`Min Delay`)**:  
+**Delay Duration (`Min Delay`)**:\
 This variable represents the length of a transit delay, measured in minutes. It is derived from the difference between scheduled and actual event resolution times, as recorded by the TTC’s operational systems. These durations are logged for each incident and standardized in the dataset as numerical values.
 
-**Transit Mode (`Transit_mode`)**:  
+**Transit Mode (`Transit_mode`)**:\
 This categorical variable identifies the mode of transit where the delay occurred: subway, streetcar, or bus. The transit mode is directly logged as part of the operational data.
 
-**Time (`Time`)**:  
+**Time (`Time`)**:\
 The timestamp of the delay event, recorded in the dataset in the format `HH:MM:SS`, specifies when the delay occurred. This variable is used to analyze temporal patterns in delays, such as peak hours.
 
-**Day (`Day`)**:  
+**Day (`Day`)**:\
 The day of the week when the delay occurred (e.g., Monday, Tuesday). This variable is derived from the event date and provides insights into potential weekly trends in delays.
 
-**Line (`Line`)**:  
+**Line (`Line`)**:\
 This variable represents the transit line or route affected by the delay (e.g., Line 1 for subway or specific route numbers for buses and streetcars). It is directly recorded in the TTC’s data logs.
 
-**Location (`Location`)**:  
+**Location (`Location`)**:\
 The specific location or station where the delay occurred is captured in this variable, allowing for spatial analysis of delay patterns.
 
-**Incident (`Incident`)**:  
+**Incident (`Incident`)**:\
 This categorical variable captures the cause of the delay, such as "Mechanical," "Security," or "Collision." Raw incident descriptions are grouped into broader categories to ensure consistency across all transit modes.
-
 
 ## Data Cleaning
 
 The transit delay data was prepared for analysis by processing raw datasets for buses, streetcars, and subways. Key steps included:
 
-1. **Adding a Transit Mode Column**:  
-   A `Transit_mode` column was added to differentiate between buses, streetcars, and subways.
+1.  **Adding a Transit Mode Column**:\
+    A `Transit_mode` column was added to differentiate between buses, streetcars, and subways.
 
-2. **Removing Unnecessary Columns**:  
-   Irrelevant columns were dropped, retaining only essential variables like `Date`, `Time`, `Day`, `Transit_mode`, `Line`, `Location`, `Incident`, and `Min Delay`.
+2.  **Removing Unnecessary Columns**:\
+    Irrelevant columns were dropped, retaining only essential variables like `Date`, `Time`, `Day`, `Transit_mode`, `Line`, `Location`, `Incident`, and `Min Delay`.
 
-3. **Standardizing Subway Line Identifiers**:  
-   Subway lines were recoded into consistent and meaningful labels (e.g., `"YU"` to `"1"`).
+3.  **Standardizing Subway Line Identifiers**:\
+    Subway lines were recoded into consistent and meaningful labels (e.g., `"YU"` to `"1"`).
 
-4. **Harmonizing Column Names and Categories**:  
-   Column names were standardized across datasets, and incidents were grouped under broader categories (e.g., `"Collision - TTC Involved"` and `"Collision - TTC"` were both labeled `"Collision"`).
+4.  **Harmonizing Column Names and Categories**:\
+    Column names were standardized across datasets, and incidents were grouped under broader categories (e.g., `"Collision - TTC Involved"` and `"Collision - TTC"` were both labeled `"Collision"`).
 
-5. **Handling Missing and Mismatched Values**:  
-   Invalid or missing data (e.g., incidents labeled `"999"`) were reassigned as `"N/A"`.
+5.  **Handling Missing and Mismatched Values**:\
+    Invalid or missing data (e.g., incidents labeled `"999"`) were reassigned as `"N/A"`.
 
-6. **Combining Datasets**:  
-   All three datasets were merged into a unified dataset with consistent structure and formatting.
+6.  **Combining Datasets**:\
+    All three datasets were merged into a unified dataset with consistent structure and formatting.
 
-**Subsampling the Dataset**:  
+**Subsampling the Dataset**:\
 To address computational challenges with the original dataset of over 80,000 observations, a random subsample of 0.1% was selected. This ensured the subset remained representative of delay events across transit modes while enabling efficient model fitting without compromising analytical integrity.
 
-**Histogram of Delays**:  
+**Histogram of Delays**:\
 @fig-histogram-delays Delays were capped at 45 minutes to focus on typical delay durations and exclude extreme values that could distort the distribution.
 
-**Boxplot of Delays**:  
+**Boxplot of Delays**:\
 @fig-boxplot-delays The interquartile range (IQR) method was used to remove extreme outliers. The upper bound was calculated as `1.5 * IQR` above the third quartile, ensuring accurate representation of central tendencies and variability in delay durations.
-
-
 
 ## Outcome variables
 
@@ -448,6 +444,7 @@ ggplot(avg_delay_time_of_day, aes(x = Time_of_Day, y = Average_Delay, color = Tr
 ```
 
 # Discussion {#sec-discuss}
+
 ## Understanding Transit Delays Across Modes
 
 This study aimed to analyze delay durations across Toronto Transit Commission (TTC) transit modes—subway, streetcar, and bus—using data from 2024. The findings reveal critical differences in delay patterns, with buses experiencing the longest delays on average, followed by streetcars and subways. These results align with expectations given the shared-road infrastructure of buses and streetcars, which are more exposed to traffic congestion and external disruptions. Subways, operating on dedicated tracks, exhibit fewer and shorter delays, highlighting the reliability of grade-separated transit systems.
@@ -466,8 +463,7 @@ These findings have practical implications for transit planning and policy. Prio
 
 ## Limitations and next steps
 
-The model accounted for only 3% of the variation in delay durations (R² = 0.033), suggesting the need to include additional factors, such as weather, traffic incidents, and ridership levels, in future analyses. Temporal variables were modeled independently, without exploring interactions or seasonal effects, which could further refine the results. Missing or inconsistent entries (e.g., incidents labeled as "N/A") may have introduced biases, while the IQR method for outlier removal may have excluded rare but valid delay events. Addtionally, future research should expand on these findings by incorporating additional predictors, such as weather and traffic data, to enhance model accuracy.
-Analyzing interactions between variables, such as the combined effects of time of day and transit mode. Lastly, exploring the impact of infrastructure improvements, such as bus rapid transit (BRT) or streetcar signal prioritization, on delay reduction.
+The model accounted for only 3% of the variation in delay durations (R² = 0.033), suggesting the need to include additional factors, such as weather, traffic incidents, and ridership levels, in future analyses. Temporal variables were modeled independently, without exploring interactions or seasonal effects, which could further refine the results. Missing or inconsistent entries (e.g., incidents labeled as "N/A") may have introduced biases, while the IQR method for outlier removal may have excluded rare but valid delay events. Addtionally, future research should expand on these findings by incorporating additional predictors, such as weather and traffic data, to enhance model accuracy. Analyzing interactions between variables, such as the combined effects of time of day and transit mode. Lastly, exploring the impact of infrastructure improvements, such as bus rapid transit (BRT) or streetcar signal prioritization, on delay reduction.
 
 \newpage
 
@@ -475,13 +471,187 @@ Analyzing interactions between variables, such as the combined effects of time o
 
 # Appendix {#sec-appendix}
 
-Surveys, sampling, and observational data appendix Please include an appendix where you focus on some aspect of surveys, sampling or observational data, related to your paper. This should be an in-depth exploration, akin to the "idealized methodology/survey/pollster methodology" sections of Paper 2. Some aspect of this is likely covered in the Measurement sub-section of your Data section, but this would be much more detailed, and might include aspects like simulation and linkages to the literature, among other aspects.
+## Ideal Methodology and Survey for Research on TTC Transit Delays
 
-# Additional data details
+**What is the population, frame, and sample?**
+
+-   Population: All TTC transit riders who use subway, streetcar, and bus services in Toronto.
+
+<!-- -->
+
+-   Frame: Riders present at various TTC stations, stops, and on-board vehicles over a representative period of time. This can be supplemented by targeting potential riders through online platforms like TTC's website and social media pages.
+
+-   Sample: A subset of TTC riders across the three transit modes. A stratified random sampling approach will be used to ensure proportional representation from subway, streetcar, and bus users.
+
+**How is the sample recruited?**
+
+-   The sample will be recruited through a mix of in-person surveys at key subway stations, streetcar stops, and bus terminals, as well as online surveys promoted through TTC’s social media and website. Participation incentives, such as small prizes or free ride vouchers, will be used to encourage greater engagement.
+
+**Sampling Approach**:
+
+-   Stratified Random Sampling: The entire population is divided into three strata based on the type of transit mode used (subway, streetcar, bus). Random samples from each stratum will be selected to ensure proportional representation.
+
+**Trade-offs**:
+
+-   Pros: Ensures that each transit mode is adequately represented in the sample, providing a more accurate comparison across the modes.
+
+-   Cons: This approach can be more complex and costly compared to simple random sampling, and may require more logistical effort to ensure each stratum is properly represented.
+
+**How is non-response handled?**
+
+-   To minimize non-response, participants will receive multiple invitations to participate through different means (e.g., follow-up emails for online surveys, re-approaching riders in-person). Statistical weighting will also be used to adjust for non-response based on known demographics.
+
+**What is good and bad about the questionnaire?**
+
+-   The survey will be pilot tested with a small group of riders to identify any ambiguous or confusing questions. Pilot testing is essential for improving survey quality, as it allows researchers to identify and address issues before full deployment [@centra1991by]. Questions are designed to be clear, conversational, and relevant to respondents. Cognitive load will be considered by varying question types and placing simpler questions before more complex ones. Multiple-choice questions will be used for questions with specific options, while open-ended questions will be used to collect detailed feedback. In addition, the survey introduction will specify the purpose, contact information of the surveyors, the confidentiality of responses, and ethics clearance if applicable.
+
+## Idealed Survey
+
+A sample survey can be found at : https://forms.gle/WLkXZTSNGCxoMQdM7
+
+The survey questions demo are also detailed below.
+
+## Survey Demo
+
+**Background and Purpose of the Study**
+
+\- I am conducting a survey to understand transit delays on the TTC.
+
+**Participation Involvement**
+
+\- You are being asked to complete a short survey about your experiences with TTC transit delays. This survey will take approximately 5-7 minutes to complete.
+
+**Confidentiality**
+
+\- Your responses will be completely confidential. No individual respondent will be identifiable in any of the published data, and all identifying information will be removed before analysis.
+
+**Usage of Data**
+
+\- The results of this survey will be summarized and may be used in reports or presentations to better understand and address transit delays. If you consent, your data will be included in the calculation of summary statistics for this research.
+
+**Withdrawal from the Study**
+
+\- Participation is completely voluntary. You may choose to withdraw your data from the study up to one month after completing the survey, by notifying the researchers via email.
+
+**Contact Information**
+
+\- If you have questions or concerns, please contact the research team at claire.chang@mail.utoronto.ca
+
+**Informed Consent**
+
+1.  After carefully reading the informed consent document, please indicate below whether you consent to have your anonymized responses included in the research study?
+
+-   Yes, I consent to have my anonymized survey responses used in this research.
+
+-   No, I do not want to have my data used, but I would still like to complete the survey.
+
+2.  **Demographics**
+
+-   Which age group do you belong to?
+
+    -   Under 18
+
+    -   18-29
+
+    -   30-49
+
+    -   50-64
+
+    -   65+
+
+-   How often do you use the TTC?
+
+    -   Daily
+
+    -   2-3 times a week
+
+    -   Once a week
+
+    -   Rarely
+
+3.  **Transit Use**
+
+-   Which transit mode do you primarily use?
+
+    -   Subway
+
+    -   Streetcar
+
+    -   Bus
+
+-   Do you use multiple transit modes during a single trip?
+
+    -   Yes
+
+    -   No
+
+4.  **Delay Experience**
+
+-   On average, how often do you experience delays when using the TTC?
+
+    -   Every trip
+
+    -   Frequently (at least once a week)
+
+    -   Occasionally (at least once a month)
+
+    -   Rarely (less than once a month)
+
+    -   Never
+
+-   Which transit mode do you experience the most delays with?
+
+    -   Subway
+
+    -   Streetcar
+
+    -   Bus
+
+-   Please estimate the average delay time for the mode you experience the most delays with:
+
+    -   Less than 5 minutes
+
+    -   5-10 minutes
+
+    -   10-20 minutes
+
+    -   More than 20 minutes
+
+5.  **Impact of Delays**
+
+-   How do delays impact your travel plans? (Select all that apply)
+
+    -   Late arrival to work/school
+
+    -   Missed appointments
+
+    -   Increased stress
+
+    -   No major impact
+
+-   How do you usually cope with delays? (Select all that apply)
+
+    -   Wait patiently
+
+    -   Switch to another mode (e.g., take a bus if the subway is delayed)
+
+    -   Cancel or change plans
+
+    -   Other (please specify)
+
+6.  **Open-Ended Question**
+
+-   Please describe any specific issues you have faced with delays on TTC transit modes. How do these experiences affect your perception of TTC services?
+
+7.  **Suggestions**
+
+-   What changes would you suggest to reduce delays or improve your experience with TTC services?
+
+8.  **Conclusion**
+
+-   Thank you for your time and valuable feedback! Your responses will contribute to a better understanding of TTC transit delays and how to address them effectively.
 
 # Model details {#sec-model-details}
-
-
 
 ## Diagnostics
 
