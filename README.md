@@ -15,15 +15,14 @@ The repo is structured as:
     - `raw_data_streetcar.csv`
     - `raw_data_subway.csv`
 -   `02-data/analysis_data` contains the cleaned dataset that was constructed.
-    - `analysis_data.parquet`
+    - `cleaned_combined_data.parquet`
 -   `model` contains fitted models. 
--   `other` contains details about LLM chat interactions and sketches.
+-   `other` contains details about LLM chat interactions, sketches and shiny app.
 -   `paper` contains the files used to generate the paper, including the Quarto document and reference bibliography file, as well as the PDF of the paper. 
--   `scripts` contains the R scripts used to simulate, test simulate, download, clean data, test analysis, EDA, model, and replications.
-- `.gitignore`: Specifies files to ignore in version control.
+-   `scripts` contains the R scripts used to simulate, test simulate, download, clean data, test analysis, EDA, and model.
 - `Toronto_TTC_Transportation.Rproj`: The R project file.
 - `README.md`: This file.
 
 ## Statement on LLM usage
 
-Aspects of the code were written with the assistance of ChatGPT-4o. The entire chat history is saved in other/llm_usage/usage.txt.
+Aspects of the paper were written with the assistance of ChatGPT-4o. The entire chat history is saved in other/llm_usage/usage.txt.
