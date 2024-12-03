@@ -2,7 +2,7 @@
 
 ## Overview
 
-This research investigates the frequency and duration of delays across different TTC (Toronto Transit Commission) transit modes—subway, streetcar, and bus. The goal is to determine which transit mode experiences the highest frequency and longest duration of delays and to understand how these delays vary by time of day. The analysis utilizes data obtained from Open Data Toronto, focusing on delay reports across TTC transit modes. By conducting a comparative analysis, this study aims to provide insights into how the reliability of TTC services fluctuates based on transit type and time of operation. This can be useful for both commuters looking to optimize their routes and for urban planners seeking to improve Toronto's public transit system.
+This research investigates the duration of delays across different TTC (Toronto Transit Commission) transit modes — subway, streetcar, and bus. The goal is to determine which transit mode experiences the highest frequency and longest duration of delays and to understand how these delays vary by time of day. The analysis utilizes data obtained from Open Data Toronto, focusing on delay reports across TTC transit modes. By conducting a comparative analysis, this study aims to provide insights into how the reliability of TTC services fluctuates based on transit type and time of operation. This can be useful for both commuters looking to optimize their routes and for urban planners seeking to improve Toronto's public transit system.
 
 ## File Structure
 
