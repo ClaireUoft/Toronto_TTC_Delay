@@ -13,7 +13,7 @@ library(testthat)
 library(arrow)
 
 #### Load Cleaned Data ####
-cleaned_combined_data <- read_parquet("/Users/claire/Downloads/Toronto_Transportation-main 2/data/02-analysis_data/cleaned_combined_data.parquet")
+cleaned_combined_data <- read_parquet(here::here("data/02-analysis_data/cleaned_combined_data.parquet"))
 
 #### Test Data ####
 # Test that the cleaned dataset has the correct columns

@@ -14,7 +14,7 @@ library(testthat)
 library(tidyverse)
 
 #### Load simulated data ####
-simulated_data <- read_csv("/Users/claire/Downloads/Toronto_Transportation-main 2/data/00-simulated_data/simulated_data.csv")
+simulated_data <- read_csv(here::here("data/00-simulated_data/simulated_data.csv"))
 
 
 
