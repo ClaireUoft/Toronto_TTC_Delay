@@ -2891,4 +2891,9 @@ Notes for Your Draft
 Make sure to include the generated plots (Figure 3, 4, and 5) and tables (Table 1 and Table 2) when compiling your final paper.
 You may want to customize some of the R code further if you want more fine-tuned control over labels, colors, or the type of graph you want.
 The regression model results should be written in an accessible way, explaining what each coefficient means, and avoiding too much technical jargon for a general audience.
+
+
+User: write the overview of my readme paper attched
+
+Chatgpt: This research investigates the duration of delays across different TTC (Toronto Transit Commission) transit modes — subway, streetcar, and bus. The goal is to determine which transit mode experiences the highest frequency and longest duration of delays and to understand how these delays vary by time of day. The analysis utilizes data obtained from Open Data Toronto, focusing on delay reports across TTC transit modes. By conducting a comparative analysis, this study aims to provide insights into how the reliability of TTC services fluctuates based on transit type and time of operation. This can be useful for both commuters looking to optimize their routes and for urban planners seeking to improve Toronto's public transit system.
 Feel free to let me know if you need more help refining the "Results" section or running any of the analyses or plots!
